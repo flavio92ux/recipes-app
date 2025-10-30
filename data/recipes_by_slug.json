@@ -1,0 +1,488 @@
+{
+  "pudim-de-leite-ninho": {
+    "id": "r-0001",
+    "slug": "pudim-de-leite-ninho",
+    "title": "Pudim de Leite Ninho",
+    "category": "doce",
+    "description": "Pudim cremoso de leite em pó (Leite Ninho), textura sedosa e calda caramelizada.",
+    "prepTime": 45,
+    "servings": 8,
+    "image": "/images/pudim-leite-ninho.jpg",
+    "author": "Chef Mariana",
+    "ingredients": [
+      "1 lata de leite condensado",
+      "2 xícaras de leite Ninho (ou leite em pó)",
+      "3 ovos",
+      "1 xícara de açúcar para a calda"
+    ],
+    "steps": [
+      "Preaqueça o forno a 180°C e prepare a calda derretendo o açúcar até dourar.",
+      "Bata no liquidificador o leite condensado, o leite em pó e os ovos até homogeneizar.",
+      "Despeje sobre a calda na forma com furo e asse em banho-maria por ~45 minutos.",
+      "Retire, deixe esfriar e leve à geladeira por 4 horas antes de desenformar."
+    ],
+    "tags": ["sobremesa", "cremosa", "festa"],
+    "seo": {
+      "title": "Pudim de Leite Ninho - Receita Fácil e Cremosa",
+      "description": "Aprenda a fazer um pudim de leite Ninho cremoso, passo a passo. Receita prática para festas e sobremesas.",
+      "canonical": "/receitas/pudim-de-leite-ninho"
+    },
+    "publishedAt": "2025-01-15T10:30:00Z"
+  },
+  "bolo-de-cenoura-com-cobertura-de-chocolate": {
+    "id": "r-0002",
+    "slug": "bolo-de-cenoura-com-cobertura-de-chocolate",
+    "title": "Bolo de Cenoura com Cobertura de Chocolate",
+    "category": "doce",
+    "description": "Bolo fofinho de cenoura com calda de chocolate tradicional.",
+    "prepTime": 60,
+    "servings": 10,
+    "image": "/images/bolo-cenoura.jpg",
+    "author": "Breno Silva",
+    "ingredients": [
+      "3 cenouras médias",
+      "3 ovos",
+      "1 xícara de óleo",
+      "2 xícaras de farinha de trigo",
+      "1 xícara de açúcar",
+      "1 colher de sopa de fermento"
+    ],
+    "steps": [
+      "Bata no liquidificador cenoura, ovos e óleo.",
+      "Misture com os secos e acrescente o fermento por último.",
+      "Asse em forma untada a 180°C por cerca de 35-40 minutos.",
+      "Faça a cobertura de chocolate e despeje sobre o bolo ainda morno."
+    ],
+    "tags": ["bolo", "simples"],
+    "seo": {
+      "title": "Bolo de Cenoura com Cobertura de Chocolate - Receita Tradicional",
+      "description": "Receita fácil de bolo de cenoura com cobertura de chocolate. Passo a passo com dicas para bolo macio.",
+      "canonical": "/receitas/bolo-de-cenoura-com-cobertura-de-chocolate"
+    },
+    "publishedAt": "2025-02-10T09:00:00Z"
+  },
+  "lasanha-de-frango-com-catupiry": {
+    "id": "r-0003",
+    "slug": "lasanha-de-frango-com-catupiry",
+    "title": "Lasanha de Frango com Catupiry",
+    "category": "massa",
+    "description": "Lasanha prática com frango desfiado e catupiry, ideal para família.",
+    "prepTime": 90,
+    "servings": 6,
+    "image": "/images/lasanha-frango.jpg",
+    "author": "Marcos Oliveira",
+    "ingredients": [
+      "500g de frango cozido e desfiado",
+      "1 pote de requeijão tipo Catupiry",
+      "500g de massa para lasanha",
+      "1 litro de molho de tomate",
+      "queijo ralado a gosto"
+    ],
+    "steps": [
+      "Refogue o frango com temperos e misture com o molho.",
+      "Monte camadas: molho, massa, frango e Catupiry.",
+      "Finalize com queijo ralado e leve ao forno por ~40 minutos."
+    ],
+    "tags": ["conforto", "prático"],
+    "seo": {
+      "title": "Lasanha de Frango com Catupiry - Receita Fácil",
+      "description": "Lasanha cremosa com frango desfiado e Catupiry. Passo a passo para uma lasanha suculenta.",
+      "canonical": "/receitas/lasanha-de-frango-com-catupiry"
+    },
+    "publishedAt": "2025-02-21T12:00:00Z"
+  },
+  "salada-tropical-com-frango-grelhado": {
+    "id": "r-0004",
+    "slug": "salada-tropical-com-frango-grelhado",
+    "title": "Salada Tropical com Frango Grelhado",
+    "category": "fit",
+    "description": "Salada fresca com manga e frango grelhado, ideal para almoço leve.",
+    "prepTime": 20,
+    "servings": 2,
+    "image": "/images/salada-tropical.jpg",
+    "author": "Chef Marina",
+    "ingredients": [
+      "200g de peito de frango grelhado",
+      "Folhas verdes (alface, rúcula)",
+      "1/2 manga cortada em cubos",
+      "Molho de iogurte"
+    ],
+    "steps": [
+      "Tempere o frango e grelhe até ficar dourado.",
+      "Monte as folhas, adicione manga e o frango em tiras.",
+      "Regue com molho e sirva imediatamente."
+    ],
+    "tags": ["leve", "salada"],
+    "seo": {
+      "title": "Salada Tropical com Frango Grelhado - Receita Leve",
+      "description": "Receita de salada tropical com manga e frango grelhado, perfeita para refeições saudáveis.",
+      "canonical": "/receitas/salada-tropical-com-frango-grelhado"
+    },
+    "publishedAt": "2025-03-05T11:00:00Z"
+  },
+  "feijoada-completa": {
+    "id": "r-0005",
+    "slug": "feijoada-completa",
+    "title": "Feijoada Completa",
+    "category": "brasileira",
+    "description": "Feijoada tradicional com cortes variados e acompanhamento clássico.",
+    "prepTime": 180,
+    "servings": 10,
+    "image": "/images/feijoada.jpg",
+    "author": "Tio João",
+    "ingredients": [
+      "1 kg de feijão preto",
+      "500g de carne seca",
+      "300g de costela",
+      "linguiça calabresa",
+      "tempero a gosto"
+    ],
+    "steps": [
+      "Dessalgue a carne seca e cozinhe com o feijão até ficar macio.",
+      "Adicione as carnes cozidas e deixe apurar o sabor.",
+      "Sirva com arroz branco, couve e laranja."
+    ],
+    "tags": ["tradicional", "festa"],
+    "seo": {
+      "title": "Feijoada Completa - Receita Tradicional",
+      "description": "Como preparar uma feijoada completa e saborosa com dicas para dessalgar e cozinhar as carnes.",
+      "canonical": "/receitas/feijoada-completa"
+    },
+    "publishedAt": "2025-03-12T09:30:00Z"
+  },
+  "torta-de-limao-gelada": {
+    "id": "r-0006",
+    "slug": "torta-de-limao-gelada",
+    "title": "Torta de Limão Gelada",
+    "category": "doce",
+    "description": "Torta gelada com creme de limão e base crocante — sobremesa refrescante.",
+    "prepTime": 30,
+    "servings": 8,
+    "image": "/images/torta-limao.jpg",
+    "author": "Lia Gomes",
+    "ingredients": [
+      "1 lata de leite condensado",
+      "1 caixinha de creme de leite",
+      "suco de 3 limões",
+      "base de biscoito triturado"
+    ],
+    "steps": [
+      "Misture o leite condensado, creme de leite e o suco de limão.",
+      "Coloque sobre a base de biscoito e leve à geladeira por 2 horas."
+    ],
+    "tags": ["refrescante", "verão"],
+    "seo": {
+      "title": "Torta de Limão Gelada - Receita Simples",
+      "description": "Receita prática de torta de limão gelada, ideal para dias quentes. Passo a passo rápido.",
+      "canonical": "/receitas/torta-de-limao-gelada"
+    },
+    "publishedAt": "2025-03-18T10:00:00Z"
+  },
+  "strogonoff-de-carne-tradicional": {
+    "id": "r-0007",
+    "slug": "strogonoff-de-carne-tradicional",
+    "title": "Strogonoff de Carne Tradicional",
+    "category": "brasileira",
+    "description": "Strogonoff clássico com molho cremoso e cogumelos.",
+    "prepTime": 40,
+    "servings": 5,
+    "image": "/images/strogonoff.jpg",
+    "author": "Rafael Costa",
+    "ingredients": [
+      "500g de carne em tiras",
+      "1 caixinha de creme de leite",
+      "1 cebola picada",
+      "200g de champignon"
+    ],
+    "steps": [
+      "Doure a cebola, sele a carne e junte o champignon.",
+      "Adicione o creme de leite e ajuste o sal.",
+      "Sirva com arroz branco e batata palha."
+    ],
+    "tags": ["comfort", "jantar"],
+    "seo": {
+      "title": "Strogonoff de Carne - Receita Tradicional",
+      "description": "Receita de strogonoff de carne passo a passo para um jantar prático e saboroso.",
+      "canonical": "/receitas/strogonoff-de-carne-tradicional"
+    },
+    "publishedAt": "2025-04-01T08:00:00Z"
+  },
+  "risoto-de-camarao": {
+    "id": "r-0008",
+    "slug": "risoto-de-camarao",
+    "title": "Risoto de Camarão",
+    "category": "massa",
+    "description": "Risoto cremoso com camarões e toque cítrico.",
+    "prepTime": 50,
+    "servings": 4,
+    "image": "/images/risoto-camarao.jpg",
+    "author": "Chef Ana",
+    "ingredients": [
+      "300g de camarão limpo",
+      "300g de arroz arbóreo",
+      "caldo de legumes",
+      "1/2 cebola picada"
+    ],
+    "steps": [
+      "Refogue a cebola, toste o arroz e adicione o caldo aos poucos.",
+      "No final, incorpore os camarões já selados e finalize com manteiga."
+    ],
+    "tags": ["especial", "festa"],
+    "seo": {
+      "title": "Risoto de Camarão - Receita Cremosa",
+      "description": "Aprenda a fazer um risoto de camarão cremoso e saboroso. Dicas de ponto do arroz.",
+      "canonical": "/receitas/risoto-de-camarao"
+    },
+    "publishedAt": "2025-04-10T13:00:00Z"
+  },
+  "omelete-fit-de-claras-e-espinafre": {
+    "id": "r-0009",
+    "slug": "omelete-fit-de-claras-e-espinafre",
+    "title": "Omelete Fit de Claras e Espinafre",
+    "category": "fit",
+    "description": "Omelete leve à base de claras com espinafre — café da manhã saudável.",
+    "prepTime": 15,
+    "servings": 1,
+    "image": "/images/omelete-fit.jpg",
+    "author": "Nina Rocha",
+    "ingredients": [
+      "4 claras",
+      "1 punhado de espinafre",
+      "sal e pimenta a gosto"
+    ],
+    "steps": [
+      "Bata as claras e misture o espinafre picado.",
+      "Cozinhe em frigideira antiaderente até firmar."
+    ],
+    "tags": ["rápido", "saudável"],
+    "seo": {
+      "title": "Omelete Fit de Claras e Espinafre - Receita Rápida",
+      "description": "Receita rápida e proteica de omelete de claras com espinafre. Ideal para café da manhã saudável.",
+      "canonical": "/receitas/omelete-fit-de-claras-e-espinafre"
+    },
+    "publishedAt": "2025-04-22T07:00:00Z"
+  },
+  "brigadeiro-gourmet": {
+    "id": "r-0010",
+    "slug": "brigadeiro-gourmet",
+    "title": "Brigadeiro Gourmet",
+    "category": "doce",
+    "description": "Brigadeiro com chocolate meio amargo e ponto perfeito para enrolar.",
+    "prepTime": 25,
+    "servings": 20,
+    "image": "/images/brigadeiro.jpg",
+    "author": "Patrícia Lima",
+    "ingredients": [
+      "1 lata de leite condensado",
+      "100g de chocolate meio amargo",
+      "1 colher de sopa de manteiga"
+    ],
+    "steps": [
+      "Derreta o chocolate, junte ao leite condensado e cozinhe até ponto de brigadeiro.",
+      "Leve à geladeira e enrole se desejar."
+    ],
+    "tags": ["festa", "doces"],
+    "seo": {
+      "title": "Brigadeiro Gourmet - Receita Fácil",
+      "description": "Receita de brigadeiro gourmet com chocolate meio amargo. Dicas de ponto para enrolar.",
+      "canonical": "/receitas/brigadeiro-gourmet"
+    },
+    "publishedAt": "2025-05-01T10:00:00Z"
+  },
+  "macarrao-a-bolonhesa": {
+    "id": "r-0011",
+    "slug": "macarrao-a-bolonhesa",
+    "title": "Macarrão à Bolonhesa",
+    "category": "massa",
+    "description": "Molho bolonhesa saboroso servido com massa al dente.",
+    "prepTime": 35,
+    "servings": 4,
+    "image": "/images/macarrao-bolonhesa.jpg",
+    "author": "Paulo Mendes",
+    "ingredients": [
+      "500g de carne moída",
+      "1 lata de tomate pelado",
+      "1 cebola e 2 dentes de alho"
+    ],
+    "steps": [
+      "Refogue a carne até dourar, junte o tomate e deixe reduzir.",
+      "Cozinhe a massa conforme embalagem e sirva com o molho."
+    ],
+    "tags": ["prático", "massa"],
+    "seo": {
+      "title": "Macarrão à Bolonhesa - Receita Clássica",
+      "description": "Receita tradicional de molho bolonhesa para acompanhar massas. Dicas de preparo.",
+      "canonical": "/receitas/macarrao-a-bolonhesa"
+    },
+    "publishedAt": "2025-05-12T14:00:00Z"
+  },
+  "panqueca-de-carne-com-molho-vermelho": {
+    "id": "r-0012",
+    "slug": "panqueca-de-carne-com-molho-vermelho",
+    "title": "Panqueca de Carne com Molho Vermelho",
+    "category": "massa",
+    "description": "Panqueca recheada com carne e coberta por molho de tomate.",
+    "prepTime": 45,
+    "servings": 6,
+    "image": "/images/panqueca-carne.jpg",
+    "author": "Jéssica Alves",
+    "ingredients": [
+      "500g de carne moída",
+      "massa para panqueca pronta",
+      "Molho de tomate"
+    ],
+    "steps": [
+      "Refogue a carne, recheie as panquecas e cubra com molho.",
+      "Leve ao forno 20 minutos para gratinar."
+    ],
+    "tags": ["almoço", "família"],
+    "seo": {
+      "title": "Panqueca de Carne com Molho Vermelho",
+      "description": "Panqueca recheada de carne moída com molho de tomate. Receita prática para almoço em família.",
+      "canonical": "/receitas/panqueca-de-carne-com-molho-vermelho"
+    },
+    "publishedAt": "2025-05-20T09:00:00Z"
+  },
+  "moqueca-de-peixe": {
+    "id": "r-0013",
+    "slug": "moqueca-de-peixe",
+    "title": "Moqueca de Peixe",
+    "category": "brasileira",
+    "description": "Moqueca de peixe com dendê e leite de coco, sabor marcante.",
+    "prepTime": 70,
+    "servings": 5,
+    "image": "/images/moqueca.jpg",
+    "author": "Chef Lucas",
+    "ingredients": [
+      "1 kg de peixe em postas",
+      "1 vidro de leite de coco",
+      "azeite de dendê",
+      "coentro a gosto"
+    ],
+    "steps": [
+      "Tempere o peixe e refogue cebola, tomates e pimentões.",
+      "Adicione o leite de coco e dendê, cozinhe em fogo baixo até pronto."
+    ],
+    "tags": ["mar", "festas"],
+    "seo": {
+      "title": "Moqueca de Peixe - Receita Tradicional",
+      "description": "Como preparar moqueca de peixe com dendê e leite de coco. Sugestões de acompanhamento.",
+      "canonical": "/receitas/moqueca-de-peixe"
+    },
+    "publishedAt": "2025-05-28T11:00:00Z"
+  },
+  "brownie-de-chocolate": {
+    "id": "r-0014",
+    "slug": "brownie-de-chocolate",
+    "title": "Brownie de Chocolate",
+    "category": "doce",
+    "description": "Brownie fudgy com textura densa e chocolate intenso.",
+    "prepTime": 40,
+    "servings": 12,
+    "image": "/images/brownie.jpg",
+    "author": "Vanessa Costa",
+    "ingredients": [
+      "200g de chocolate",
+      "150g de manteiga",
+      "3 ovos",
+      "1 xícara de açúcar",
+      "1/2 xícara de farinha"
+    ],
+    "steps": [
+      "Derreta o chocolate com manteiga, bata com ovos e açúcar e acrescente a farinha.",
+      "Asse até a borda firmar e o centro ainda levemente úmido."
+    ],
+    "tags": ["sobremesa", "chocolate"],
+    "seo": {
+      "title": "Brownie de Chocolate - Receita Fudgy",
+      "description": "Receita de brownie com textura fudgy e dicas de ponto para não assar demais.",
+      "canonical": "/receitas/brownie-de-chocolate"
+    },
+    "publishedAt": "2025-06-03T15:00:00Z"
+  },
+  "hamburguer-artesanal": {
+    "id": "r-0015",
+    "slug": "hamburguer-artesanal",
+    "title": "Hambúrguer Artesanal",
+    "category": "salgado",
+    "description": "Hambúrguer caseiro com blend especial e finalização artesanal.",
+    "prepTime": 30,
+    "servings": 2,
+    "image": "/images/hamburguer.jpg",
+    "author": "Chef Pedro",
+    "ingredients": [
+      "400g de carne moída",
+      "pão brioche",
+      "temperos a gosto",
+      "queijo"
+    ],
+    "steps": [
+      "Modele os hambúrgueres, sele em chapa quente e monte com os complementos."
+    ],
+    "tags": ["lanche", "artesanal"],
+    "seo": {
+      "title": "Hambúrguer Artesanal - Receita Caseira",
+      "description": "Como fazer hambúrguer artesanal suculento em casa com dicas de preparo.",
+      "canonical": "/receitas/hamburguer-artesanal"
+    },
+    "publishedAt": "2025-06-12T13:00:00Z"
+  },
+  "salmao-assado-com-legumes": {
+    "id": "r-0016",
+    "slug": "salmao-assado-com-legumes",
+    "title": "Salmão Assado com Legumes",
+    "category": "fit",
+    "description": "Salmão assado acompanhado de legumes mediterrâneos.",
+    "prepTime": 35,
+    "servings": 2,
+    "image": "/images/salmao-legumes.jpg",
+    "author": "Mariana Rocha",
+    "ingredients": [
+      "2 filés de salmão",
+      "legumes da estação",
+      "azeite, sal e pimenta"
+    ],
+    "steps": [
+      "Tempere o salmão, asse junto dos legumes até dourar.",
+      "Sirva com suco de limão."
+    ],
+    "tags": ["saudavel", "forno"],
+    "seo": {
+      "title": "Salmão Assado com Legumes - Receita Saudável",
+      "description": "Receita de salmão assado com legumes para uma refeição equilibrada.",
+      "canonical": "/receitas/salmao-assado-com-legumes"
+    },
+    "publishedAt": "2025-06-20T12:00:00Z"
+  },
+  "tocino-e-ovos-com-tatto": {
+    "id": "r-0017",
+    "slug": "tocino-e-ovos-com-tatto",
+    "title": "Tocino (Bacon) e Ovos na Tostada",
+    "category": "café",
+    "description": "Tostadas com bacon crocante e ovos mexidos cremosos, finalizados com cebolinha.",
+    "prepTime": 15,
+    "servings": 2,
+    "image": "/images/tostada-bacon-ovos.jpg",
+    "author": "Casa da Manhã",
+    "ingredients": [
+      "4 fatias de bacon (tocino)",
+      "4 ovos",
+      "2 fatias de pão tostado",
+      "1 colher de sopa de manteiga",
+      "cebolinha a gosto",
+      "sal e pimenta"
+    ],
+    "steps": [
+      "Frite o bacon até ficar crocante e reserve.",
+      "Bata levemente os ovos com sal e pimenta; cozinhe em fogo baixo com manteiga até ficarem cremosos.",
+      "Monte sobre as tostadas, finalize com cebolinha e o bacon por cima."
+    ],
+    "tags": ["café-da-manhã", "rápido"],
+    "seo": {
+      "title": "Tostada de Bacon e Ovos Cremosos",
+      "description": "Receita rápida de tostada com bacon crocante e ovos mexidos cremosos. Perfeita para brunch.",
+      "canonical": "/receitas/tocino-e-ovos-com-tatto"
+    },
+    "publishedAt": "2025-06-28T08:30:00Z"
+  }
+}
