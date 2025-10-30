@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
@@ -8,12 +8,12 @@ import path from 'path';
  * - Simula uma API headless local lendo recipes_by_slug.json
  */
 export async function GET(
-  request: Request,
-  { params }: { params: { slug: string } }
+  request: NextRequest,
+  context: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const { slug } = params;
-    const dataPath = path.join(process.cwd(), 'src', 'data', 'recipes_by_slug.json');
+    const { slug } = await context.params;
+    const dataPath = path.join(process.cwd(), 'data', 'recipes_by_slug.json');
     const raw = fs.readFileSync(dataPath, 'utf-8');
     const json = JSON.parse(raw);
 
