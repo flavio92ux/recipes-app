@@ -8,6 +8,15 @@ export default function Header() {
   const router = useRouter();
   const [search, setSearch] = useState('');
 
+  const tags = [
+    'rápido',
+    'festa',
+    'saudável',
+    'conforto',
+    'verão',
+    'sobremesa',
+  ];
+
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
     if (search.trim()) {
@@ -57,6 +66,24 @@ export default function Header() {
           </button>
         </form>
       </div>
+
+      {/* <aside className="hidden sm:block border-t bg-gray-50">
+        <div className="max-w-5xl mx-auto px-4 py-2">
+          <h3 className="text-sm font-semibold text-gray-600 mb-1">Temas</h3>
+          <ul className="flex flex-wrap gap-3 text-sm">
+            {tags.map((tag) => (
+              <li key={tag}>
+                <Link
+                  href={`/?q=${tag}`}
+                  className="text-gray-700 hover:text-orange-600 transition"
+                >
+                  #{tag}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside> */}
     </header>
   );
 }
