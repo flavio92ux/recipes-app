@@ -1,5 +1,5 @@
 {
-  "total": 32,
+  "total": 35,
   "page": 1,
   "per_page": 30,
   "items": [
@@ -408,6 +408,108 @@
         "canonical": "/receitas/tocino-e-ovos-com-tatto"
       },
       "publishedAt": "2025-10-31T14:50:07.821Z"
+    },
+    {
+      "id": "r-0031",
+      "slug": "flavio",
+      "title": "flavio",
+      "category": "café",
+      "description": "Tostadas com bacon crocante e ovos mexidos cremosos, finalizados com cebolinha.",
+      "prepTime": 15,
+      "servings": 2,
+      "image": "/images/tostada-bacon-ovos.jpg",
+      "author": "Casa da Manhã",
+      "ingredients": [
+        "4 fatias de bacon (tocino)",
+        "4 ovos",
+        "2 fatias de pão tostado",
+        "1 colher de sopa de manteiga",
+        "cebolinha a gosto",
+        "sal e pimenta"
+      ],
+      "steps": [
+        "Frite o bacon até ficar crocante e reserve.",
+        "Bata levemente os ovos com sal e pimenta; cozinhe em fogo baixo com manteiga até ficarem cremosos.",
+        "Monte sobre as tostadas, finalize com cebolinha e o bacon por cima."
+      ],
+      "tags": [
+        "café-da-manhã",
+        "rápido"
+      ],
+      "seo": {
+        "title": "Tostada de Bacon e Ovos Cremosos",
+        "description": "Receita rápida de tostada com bacon crocante e ovos mexidos cremosos. Perfeita para brunch.",
+        "canonical": "/receitas/tocino-e-ovos-com-tatto"
+      },
+      "publishedAt": "2025-10-31T15:00:02.989Z"
+    },
+    {
+      "id": "r-0031",
+      "slug": "joao",
+      "title": "joao",
+      "category": "café",
+      "description": "Tostadas com bacon crocante e ovos mexidos cremosos, finalizados com cebolinha.",
+      "prepTime": 15,
+      "servings": 2,
+      "image": "/images/tostada-bacon-ovos.jpg",
+      "author": "Casa da Manhã",
+      "ingredients": [
+        "4 fatias de bacon (tocino)",
+        "4 ovos",
+        "2 fatias de pão tostado",
+        "1 colher de sopa de manteiga",
+        "cebolinha a gosto",
+        "sal e pimenta"
+      ],
+      "steps": [
+        "Frite o bacon até ficar crocante e reserve.",
+        "Bata levemente os ovos com sal e pimenta; cozinhe em fogo baixo com manteiga até ficarem cremosos.",
+        "Monte sobre as tostadas, finalize com cebolinha e o bacon por cima."
+      ],
+      "tags": [
+        "café-da-manhã",
+        "rápido"
+      ],
+      "seo": {
+        "title": "Tostada de Bacon e Ovos Cremosos",
+        "description": "Receita rápida de tostada com bacon crocante e ovos mexidos cremosos. Perfeita para brunch.",
+        "canonical": "/receitas/tocino-e-ovos-com-tatto"
+      },
+      "publishedAt": "2025-10-31T15:12:42.826Z"
+    },
+    {
+      "id": "r-0031",
+      "slug": "maria",
+      "title": "maria",
+      "category": "café",
+      "description": "Tostadas com bacon crocante e ovos mexidos cremosos, finalizados com cebolinha.",
+      "prepTime": 15,
+      "servings": 2,
+      "image": "/images/tostada-bacon-ovos.jpg",
+      "author": "Casa da Manhã",
+      "ingredients": [
+        "4 fatias de bacon (tocino)",
+        "4 ovos",
+        "2 fatias de pão tostado",
+        "1 colher de sopa de manteiga",
+        "cebolinha a gosto",
+        "sal e pimenta"
+      ],
+      "steps": [
+        "Frite o bacon até ficar crocante e reserve.",
+        "Bata levemente os ovos com sal e pimenta; cozinhe em fogo baixo com manteiga até ficarem cremosos.",
+        "Monte sobre as tostadas, finalize com cebolinha e o bacon por cima."
+      ],
+      "tags": [
+        "café-da-manhã",
+        "rápido"
+      ],
+      "seo": {
+        "title": "Tostada de Bacon e Ovos Cremosos",
+        "description": "Receita rápida de tostada com bacon crocante e ovos mexidos cremosos. Perfeita para brunch.",
+        "canonical": "/receitas/tocino-e-ovos-com-tatto"
+      },
+      "publishedAt": "2025-10-31T16:09:08.869Z"
     }
   ]
 }

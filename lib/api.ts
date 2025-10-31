@@ -10,7 +10,9 @@ const API_BASE_URL = 'http://localhost:3001';
  * Faz uma requisição GET /api/receitas
  */
 export async function getRecipes(): Promise<{ total: number; items: RecipeSummary[] }> {
-  const response = await fetch('http://localhost:3001/api/receitas');
+  const response = await fetch('http://localhost:3001/api/receitas', {
+    next: { tags: ['home'] }
+  });
   const json = await response.json();
   return {
     total: json.total,
