@@ -1,8 +1,6 @@
 import { getRecipes } from '@/lib/api';
 import RecipeList from '@/components/RecipeList';
 import { RecipeSummary } from '@/types/recipe';
-export const dynamic = 'force-static';
-
 
 export async function generateStaticParams(): Promise<{ category: string }[]> {
   try {
