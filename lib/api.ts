@@ -9,11 +9,27 @@ const API_BASE_URL = 'http://localhost:3001';
  * Retorna todas as receitas (resumo).
  * Faz uma requisição GET /api/receitas
  */
-export async function getRecipes(): Promise<{ total: number; items: RecipeSummary[] }> {
-  const response = await fetch('http://localhost:3001/api/receitas', {
-    next: { tags: ['home'] }
+export async function getRecipes(
+  category?: string,
+  tag?: string
+): Promise<{ total: number; items: RecipeSummary[] }> {
+  const params = new URLSearchParams();
+
+  if (category) params.append('category', category);
+  if (tag) params.append('tag', tag);
+
+  const url = `http://localhost:3001/api/receitas${params.toString() ? `?${params}` : ''}`;
+
+  const response = await fetch(url, {
+    next: { tags: ['home'] },
   });
+
+  if (!response.ok) {
+    throw new Error(`Erro ao buscar receitas: ${response.statusText}`);
+  }
+
   const json = await response.json();
+
   return {
     total: json.total,
     items: json.items,
@@ -49,6 +65,20 @@ export async function getRecipesByCategory(category: string): Promise<{ total: n
  */
 export async function getCategories(): Promise<{ total: number; items: string[] }> {
   const response = await fetch(`${API_BASE_URL}/api/categorias`);
+  const json = await response.json();
+
+  return {
+    total: json.total,
+    items: json.items,
+  };
+}
+
+/**
+ * Retorna todas as tags disponíveis
+ * Faz uma requisição GET /api/tags
+ */
+export async function getTags(): Promise<{ total: number; items: string[] }> {
+  const response = await fetch(`${API_BASE_URL}/api/tags`);
   const json = await response.json();
 
   return {

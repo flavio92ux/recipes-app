@@ -56,7 +56,7 @@ export default function Header({ categories }: { categories: { total: number; it
             {tags.map((tag) => (
               <li key={tag}>
                 <Link
-                  href={`/?q=${tag}`}
+                  href={`/tag/${tag}`}
                   className="text-gray-700 hover:text-orange-600 transition"
                 >
                   #{tag}

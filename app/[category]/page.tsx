@@ -68,11 +68,9 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   const resolvedParams = await params;
   const { category } = resolvedParams;
 
-  const data = await getRecipes();
+  const data = await getRecipes(category);
 
-  const items: RecipeSummary[] = data.items.filter(
-    (recipe) => recipe.category.toLowerCase() === category.toLowerCase()
-  );
+  const items: RecipeSummary[] = data.items;
 
   return (
     <section>
