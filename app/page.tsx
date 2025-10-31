@@ -1,12 +1,15 @@
+import { getRecipes } from '@/lib/api';
 import RecipeList from '@/components/RecipeList';
 import { RecipeSummary } from '@/types/recipe';
 
+// Força Next.js a tratar essa rota como estática
+export const dynamic = 'force-static';
+// Revalidação a cada 60s
+export const revalidate = 60;
+
 export default async function HomePage() {
-  const data = await fetch('http://localhost:3000/api/receitas');
-
-  const json = await data.json();
-
-  const items: RecipeSummary[] = json.items;
+  const data = await getRecipes();
+  const items: RecipeSummary[] = data.items;
 
   return (
     <section>
