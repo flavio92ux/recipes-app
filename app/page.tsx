@@ -1,30 +1,15 @@
-import { getRecipes } from '@/lib/api';
 import RecipeList from '@/components/RecipeList';
 import { RecipeSummary } from '@/types/recipe';
 
-// Revalidação a cada 60s para simular ISR de página estática
-export const revalidate = 60;
+export default async function HomePage() {
+  const data = await fetch('http://localhost:3000/api/receitas');
 
-export default async function HomePage({ searchParams }: { searchParams?: { category?: string } | Promise<{ category?: string } | undefined> }) {
-  const data = await getRecipes();
+  const json = await data.json();
 
-  const resolved = await searchParams;
-  const category = resolved?.category;
-
-  let items: RecipeSummary[] = data.items;
-
-  if (category) {
-    items = items.filter(
-      (r) => r.category.toLowerCase() === category.toLowerCase()
-    );
-  }
+  const items: RecipeSummary[] = json.items;
 
   return (
     <section>
-      <h1 className="text-2xl font-bold mb-4">
-        {category ? `Receitas: ${category}` : 'Últimas receitas'}
-      </h1>
-
       {items.length === 0 ? (
         <p>Nenhuma receita encontrada.</p>
       ) : (
