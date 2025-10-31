@@ -1,18 +1,26 @@
 import { getRecipes } from '@/lib/api';
-// Força Next.js a tratar essa rota como estática
-export const dynamic = 'force-static';
-// Revalidação a cada 60s
-export const revalidate = 60;
-
-// Pré-gera todas as páginas de categoria conhecidas no build
-export async function generateStaticParams() {
-  const data = await getRecipes();
-  const categories = new Set(data.items.map(recipe => recipe.category.toLowerCase()));
-  return Array.from(categories).map(category => ({ category }));
-}
-
 import RecipeList from '@/components/RecipeList';
 import { RecipeSummary } from '@/types/recipe';
+export const dynamic = 'force-static';
+
+
+export async function generateStaticParams(): Promise<{ category: string }[]> {
+  try {
+    const res = await fetch('http://localhost:3001/api/receitas');
+
+    if (!res.ok) return [];
+
+    const data = await res.json();
+
+    const items: RecipeSummary[] = data.items || [];
+    const categories = Array.from(
+      new Set(items.map((r) => r.category?.toLowerCase()).filter(Boolean))
+    );
+    return categories.map((category) => ({ category }));
+  } catch (err) {
+    return [];
+  }
+}
 
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
   const resolvedParams = await params;

@@ -6,7 +6,7 @@ const fs = require('fs');
 const app = express();
 const PORT = 3001;
 
-// Habilita CORS para o frontend Next.js
+
 app.use(cors({
   origin: 'http://localhost:3000',
   methods: ['GET'],

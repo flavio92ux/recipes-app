@@ -6,11 +6,7 @@ import { recipeMetadata } from '@/lib/seo';
 export const revalidate = 60;
 
 // Geração de metadados dinâmicos (SEO)
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string } | Promise<{ slug: string }>;
-}) {
+export async function generateMetadata({ params }: { params: { slug: string } | Promise<{ slug: string }> }) {
   const resolvedParams = await params;
   const recipe = await getRecipeBySlug(resolvedParams.slug);
   if (!recipe) {
