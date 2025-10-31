@@ -58,6 +58,24 @@ app.get('/api/receitas/:slug', (req, res) => {
   }
 });
 
+// GET /api/categorias - Retorna lista de categorias únicas
+app.get('/api/categorias', (req, res) => {
+  try {
+    const filePath = path.join(dataDir, 'recipes.json');
+    const raw = fs.readFileSync(filePath, 'utf-8');
+    const data = JSON.parse(raw);
+
+    const categories = Array.from(
+      new Set((data.items || []).map((r) => (r.category || '').toLowerCase()).filter(Boolean))
+    );
+
+    res.json({ total: categories.length, items: categories });
+  } catch (error) {
+    console.error('Erro ao ler categorias:', error);
+    res.status(500).json({ error: 'Erro ao carregar categorias' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`🚀 API rodando em http://localhost:${PORT}`);
 });

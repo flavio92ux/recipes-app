@@ -1,20 +1,17 @@
-import fs from 'fs';
-import path from 'path';
 import type { Recipe, RecipeSummary } from '@/types/recipe';
 
 /**
- * Caminho base para os arquivos de dados locais.
+ * Base URL para a API
  */
-const dataDir = path.join(process.cwd(), 'data');
+const API_BASE_URL = 'http://localhost:3001';
 
 /**
  * Retorna todas as receitas (resumo).
- * Simula uma requisição GET /api/receitas
+ * Faz uma requisição GET /api/receitas
  */
 export async function getRecipes(): Promise<{ total: number; items: RecipeSummary[] }> {
-  const filePath = path.join(dataDir, 'recipes.json');
-  const raw = fs.readFileSync(filePath, 'utf-8');
-  const json = JSON.parse(raw);
+  const response = await fetch('http://localhost:3001/api/receitas');
+  const json = await response.json();
   return {
     total: json.total,
     items: json.items,
@@ -23,11 +20,32 @@ export async function getRecipes(): Promise<{ total: number; items: RecipeSummar
 
 /**
  * Retorna uma receita completa pelo slug.
- * Simula uma requisição GET /api/receitas/[slug]
+ * Faz uma requisição GET /api/receitas/[slug]
  */
 export async function getRecipeBySlug(slug: string): Promise<Recipe | null> {
-  const filePath = path.join(dataDir, 'recipes_by_slug.json');
-  const raw = fs.readFileSync(filePath, 'utf-8');
-  const map = JSON.parse(raw);
-  return map[slug] ?? null;
+  const response = await fetch(`${API_BASE_URL}/api/receitas/${slug}`);
+  if (!response.ok) return null;
+  return response.json();
+}
+
+/**
+ * Retorna todas as receitas de uma categoria específica
+ * Faz uma requisição GET /api/receitas?category=[category]
+ */
+export async function getRecipesByCategory(category: string): Promise<{ total: number; items: RecipeSummary[] }> {
+  const response = await fetch(`${API_BASE_URL}/api/receitas?category=${encodeURIComponent(category)}`);
+  const json = await response.json();
+  return {
+    total: json.total,
+    items: json.items,
+  };
+}
+
+/**
+ * Retorna todas as categorias disponíveis
+ * Faz uma requisição GET /api/categorias
+ */
+export async function getCategories(): Promise<string[]> {
+  const response = await fetch(`${API_BASE_URL}/api/categorias`);
+  return response.json();
 }

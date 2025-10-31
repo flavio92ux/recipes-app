@@ -4,17 +4,19 @@ import { RecipeSummary } from '@/types/recipe';
 
 export async function generateStaticParams(): Promise<{ category: string }[]> {
   try {
-    const res = await fetch('http://localhost:3001/api/receitas');
+    const res = await fetch('http://localhost:3001/api/categorias');
 
     if (!res.ok) return [];
 
-    const data = await res.json();
+    const json = await res.json();
 
-    const items: RecipeSummary[] = data.items || [];
-    const categories = Array.from(
-      new Set(items.map((r) => r.category?.toLowerCase()).filter(Boolean))
-    );
-    return categories.map((category) => ({ category }));
+    const items = json.items || [];
+    if (items.length === 0) return [];
+    if (typeof items[0] === 'string') {
+      return items.map((c: string) => ({ category: c }));
+    }
+
+    return items;
   } catch (err) {
     return [];
   }

@@ -8,7 +8,9 @@ export const dynamic = 'force-static';
 export const revalidate = 60;
 
 export default async function HomePage() {
-  const data = await getRecipes();
+  const res = await fetch('http://localhost:3001/api/receitas');
+  const data = await res.json();
+  
   const items: RecipeSummary[] = data.items;
 
   return (
