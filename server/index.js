@@ -76,6 +76,22 @@ app.get('/api/categorias', (req, res) => {
   }
 });
 
+// GET /api/slugs - Retorna todos os slugs
+app.get('/api/slugs', (req, res) => {
+  try {
+    const filePath = path.join(dataDir, 'recipes.json');
+    const raw = fs.readFileSync(filePath, 'utf-8');
+    const data = JSON.parse(raw);
+
+    const slugs = (data.items || []).map((r) => r.slug).filter(Boolean);
+
+    res.json({ total: slugs.length, items: slugs });
+  } catch (error) {
+    console.error('Erro ao carregar slugs:', error);
+    res.status(500).json({ error: 'Erro ao carregar slugs' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`🚀 API rodando em http://localhost:${PORT}`);
 });

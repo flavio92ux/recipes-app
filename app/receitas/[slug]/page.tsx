@@ -1,4 +1,4 @@
-import { getRecipeBySlug } from '@/lib/api';
+import { getRecipeBySlug, getSlugs } from '@/lib/api';
 import RecipeDetail from '@/components/RecipeDetail';
 import { recipeMetadata } from '@/lib/seo';
 
@@ -14,11 +14,15 @@ export const dynamicParams = true;
 // esses slugs sejam obtidos.
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   try {
-    const res = await fetch('http://localhost:3001/api/receitas');
-    if (!res.ok) return [];
-    const data = await res.json();
-    const items = data.items || [];
-    return items.map((r: any) => ({ slug: r.slug }));
+    const data = await getSlugs();
+    const items: string[] = data.items || [];
+
+    if (items.length === 0) return [];
+    if (typeof items[0] === 'string') {
+      return items.map((c: string) => ({ slug: c }));
+    }
+
+    return [];
   } catch (err) {
     console.warn('generateStaticParams: falha ao buscar slugs em 3001', err);
     return [];

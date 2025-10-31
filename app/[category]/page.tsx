@@ -1,22 +1,18 @@
-import { getRecipes } from '@/lib/api';
+import { getCategories, getRecipes } from '@/lib/api';
 import RecipeList from '@/components/RecipeList';
 import { RecipeSummary } from '@/types/recipe';
 
 export async function generateStaticParams(): Promise<{ category: string }[]> {
   try {
-    const res = await fetch('http://localhost:3001/api/categorias');
+    const data = await getCategories()
 
-    if (!res.ok) return [];
-
-    const json = await res.json();
-
-    const items = json.items || [];
+    const items = data.items || [];
     if (items.length === 0) return [];
     if (typeof items[0] === 'string') {
       return items.map((c: string) => ({ category: c }));
     }
 
-    return items;
+    return items.map((c: string) => ({ category: c }));
   } catch (err) {
     return [];
   }

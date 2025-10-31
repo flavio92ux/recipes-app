@@ -45,7 +45,22 @@ export async function getRecipesByCategory(category: string): Promise<{ total: n
  * Retorna todas as categorias disponíveis
  * Faz uma requisição GET /api/categorias
  */
-export async function getCategories(): Promise<string[]> {
+export async function getCategories(): Promise<{ total: number; items: string[] }> {
   const response = await fetch(`${API_BASE_URL}/api/categorias`);
-  return response.json();
+  const json = await response.json();
+
+  return {
+    total: json.total,
+    items: json.items,
+  };
+}
+
+export async function getSlugs(): Promise<{ total: number; items: string[] }> {
+  const response = await fetch(`${API_BASE_URL}/api/slugs`);
+  const json = await response.json();
+
+  return {
+    total: json.total,
+    items: json.items,
+  };
 }
