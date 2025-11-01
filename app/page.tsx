@@ -14,6 +14,9 @@ export default async function HomePage() {
 
   return (
     <section>
+      <h1 className="text-4xl font-bold mb-2">Delícias na Cozinha</h1>
+      <h2 className="text-xl text-gray-600 mb-6">Receitas Fáceis e Rápidas para o Dia a Dia</h2>
+      
       {items.length === 0 ? (
         <p>Nenhuma receita encontrada.</p>
       ) : (

@@ -142,12 +142,7 @@ export function homeJsonLd(): string {
     '@type': 'WebSite',
     url: 'https://deliciasnacozinha.com/',
     name: 'Delícias na Cozinha',
-    description: 'Descubra receitas deliciosas e práticas para o dia a dia.',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: 'https://deliciasnacozinha.com/api/search?q={search_term_string}',
-      'query-input': 'required name=search_term_string',
-    },
+    description: 'Descubra receitas deliciosas e práticas para o dia a dia.'
   };
 
   return JSON.stringify(ld);
