@@ -1,6 +1,6 @@
 import { getRecipeBySlug, getSlugs } from '@/lib/api';
 import RecipeDetail from '@/components/RecipeDetail';
-import { recipeMetadata } from '@/lib/seo';
+import { recipeMetadata, recipeJsonLd } from '@/lib/seo';
 
 // Define revalidação incremental (ISR)
 export const revalidate = 60;
@@ -51,9 +51,17 @@ export default async function RecipePage({
     return <p>Receita não encontrada.</p>;
   }
 
+  const jsonLd = recipeJsonLd(recipe);
+
   return (
-    <article className="prose max-w-none">
-      <RecipeDetail r={recipe} />
-    </article>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd }}
+      />
+      <article className="prose max-w-none">
+        <RecipeDetail r={recipe} />
+      </article>
+    </>
   );
 }
