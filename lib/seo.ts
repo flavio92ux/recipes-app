@@ -85,6 +85,55 @@ export function recipeMetadata(recipe: Recipe): Metadata {
 }
 
 /**
+ * Gera metadata para páginas de categorias.
+ * Usar em generateMetadata() dentro de app/[category]/page.tsx
+ */
+export function categoryMetadata(category: string): Metadata {
+  const title = `Receitas de ${category} | Delícias na Cozinha`;
+  const description = `Descubra as melhores receitas de ${category} no Delícias na Cozinha. Receitas práticas e deliciosas para todas as ocasiões.`;
+
+  return {
+    title,
+    description,
+    keywords: [
+      'receitas',
+      category,
+      'cozinha',
+      'culinária',
+      'doces',
+      'salgados',
+      'gastronomia',
+    ],
+    openGraph: {
+      title,
+      description,
+      url: `https://deliciasnacozinha.com/${category}`,
+      siteName: 'Delícias na Cozinha',
+      images: [
+        {
+          url: `https://deliciasnacozinha.com/images/${category}-og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: `Receitas de ${category} - Delícias na Cozinha`,
+        },
+      ],
+      type: 'website',
+      locale: 'pt_BR',
+    },
+    alternates: {
+      canonical: `https://deliciasnacozinha.com/${category}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  };
+}
+
+/**
  * Gera metadata para páginas de tags.
  * Usar em generateMetadata() dentro de app/tag/[tag]/page.tsx
  */
@@ -142,7 +191,7 @@ export function homeJsonLd(): string {
     '@type': 'WebSite',
     url: 'https://deliciasnacozinha.com/',
     name: 'Delícias na Cozinha',
-    description: 'Descubra receitas deliciosas e práticas para o dia a dia.'
+    description: 'Descubra receitas deliciosas e práticas para o dia a dia.',
   };
 
   return JSON.stringify(ld);

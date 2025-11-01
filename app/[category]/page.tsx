@@ -1,4 +1,5 @@
 import { getCategories, getRecipes } from '@/lib/api';
+import { categoryMetadata } from '@/lib/seo';
 import RecipeList from '@/components/RecipeList';
 import { RecipeSummary } from '@/types/recipe';
 import { Metadata } from 'next';
@@ -23,45 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   const resolvedParams = await params;
   const { category } = resolvedParams;
 
-  return {
-    title: `Receitas de ${category} | Delícias na Cozinha`,
-    description: `Descubra as melhores receitas de ${category} no Delícias na Cozinha. Receitas práticas e deliciosas para todas as ocasiões.`,
-    keywords: [
-      'receitas',
-      category,
-      'cozinha',
-      'culinária',
-      'doces',
-      'salgados',
-      'gastronomia',
-    ],
-    openGraph: {
-      title: `Receitas de ${category} | Delícias na Cozinha`,
-      description: `Descubra as melhores receitas de ${category} no Delícias na Cozinha. Receitas práticas e deliciosas para todas as ocasiões.`,
-      url: `https://deliciasnacozinha.com/${category}`,
-      siteName: 'Delícias na Cozinha',
-      images: [
-        {
-          url: `https://deliciasnacozinha.com/images/${category}-og-image.jpg`,
-          width: 1200,
-          height: 630,
-          alt: `Receitas de ${category} - Delícias na Cozinha`,
-        },
-      ],
-      type: 'website',
-      locale: 'pt_BR',
-    },
-    alternates: {
-      canonical: `https://deliciasnacozinha.com/${category}`,
-    },
-    robots: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  };
+  return categoryMetadata(category);
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
@@ -74,7 +37,8 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
 
   return (
     <section>
-      <h1 className="text-2xl font-bold mb-4">Receitas: {category}</h1>
+      <h1 className="text-3xl font-bold mb-2">Receitas de {category}</h1>
+      <h2 className="text-lg text-gray-600 mb-6">Explore nossa coleção de receitas deliciosas da categoria {category}</h2>
 
       {items.length === 0 ? (
         <p>Nenhuma receita encontrada para a categoria &quot;{category}&quot;.</p>
