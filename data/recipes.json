@@ -13,7 +13,7 @@
       "servings": 8,
       "image": "/images/pudim-leite-ninho.jpg",
       "author": "Chef Mariana",
-      "publishedAt": "2025-01-15T10:30:00Z"
+      "publishedAt": "2025-10-31T16:09:08.869Z"
     },
     {
       "id": "r-0002",
@@ -25,7 +25,7 @@
       "servings": 10,
       "image": "/images/bolo-cenoura.jpg",
       "author": "Breno Silva",
-      "publishedAt": "2025-02-10T09:00:00Z"
+      "publishedAt": "2025-10-31T15:12:42.826Z"
     },
     {
       "id": "r-0003",
@@ -37,7 +37,7 @@
       "servings": 6,
       "image": "/images/lasanha-frango.jpg",
       "author": "Marcos Oliveira",
-      "publishedAt": "2025-02-21T12:00:00Z"
+      "publishedAt": "2025-10-31T15:00:02.989Z"
     },
     {
       "id": "r-0004",
@@ -49,7 +49,7 @@
       "servings": 2,
       "image": "/images/salada-tropical.jpg",
       "author": "Chef Marina",
-      "publishedAt": "2025-03-05T11:00:00Z"
+      "publishedAt": "2025-10-31T14:50:07.821Z"
     },
     {
       "id": "r-0005",
@@ -61,7 +61,7 @@
       "servings": 10,
       "image": "/images/feijoada.jpg",
       "author": "Tio João",
-      "publishedAt": "2025-03-12T09:30:00Z"
+      "publishedAt": "2025-10-10T12:00:00Z"
     },
     {
       "id": "r-0006",
@@ -73,7 +73,7 @@
       "servings": 8,
       "image": "/images/torta-limao.jpg",
       "author": "Lia Gomes",
-      "publishedAt": "2025-03-18T10:00:00Z"
+      "publishedAt": "2025-10-02T09:00:00Z"
     },
     {
       "id": "r-0007",
@@ -85,7 +85,7 @@
       "servings": 5,
       "image": "/images/strogonoff.jpg",
       "author": "Rafael Costa",
-      "publishedAt": "2025-04-01T08:00:00Z"
+      "publishedAt": "2025-09-25T18:30:00Z"
     },
     {
       "id": "r-0008",
@@ -97,19 +97,19 @@
       "servings": 4,
       "image": "/images/risoto-camarao.jpg",
       "author": "Chef Ana",
-      "publishedAt": "2025-04-10T13:00:00Z"
+      "publishedAt": "2025-09-18T16:00:00Z"
     },
     {
       "id": "r-0009",
       "slug": "omelete-fit-de-claras-e-espinafre",
       "title": "Omelete Fit de Claras e Espinafre",
       "category": "fit",
-      "teaser": "Rápido omelete proteico, ideal para café da manhã saudável.",
+      "teaser": "Rápido omelete proteico, ideal para caf�� da manhã saudável.",
       "prepTime": 15,
       "servings": 1,
       "image": "/images/omelete-fit.jpg",
       "author": "Nina Rocha",
-      "publishedAt": "2025-04-22T07:00:00Z"
+      "publishedAt": "2025-09-10T20:00:00Z"
     },
     {
       "id": "r-0010",
@@ -121,7 +121,7 @@
       "servings": 20,
       "image": "/images/brigadeiro.jpg",
       "author": "Patrícia Lima",
-      "publishedAt": "2025-05-01T10:00:00Z"
+      "publishedAt": "2025-09-01T09:00:00Z"
     },
     {
       "id": "r-0011",
@@ -133,7 +133,7 @@
       "servings": 4,
       "image": "/images/macarrao-bolonhesa.jpg",
       "author": "Paulo Mendes",
-      "publishedAt": "2025-05-12T14:00:00Z"
+      "publishedAt": "2025-08-25T19:00:00Z"
     },
     {
       "id": "r-0012",
@@ -145,7 +145,7 @@
       "servings": 6,
       "image": "/images/panqueca-carne.jpg",
       "author": "Jéssica Alves",
-      "publishedAt": "2025-05-20T09:00:00Z"
+      "publishedAt": "2025-08-18T13:00:00Z"
     },
     {
       "id": "r-0013",
@@ -157,7 +157,7 @@
       "servings": 5,
       "image": "/images/moqueca.jpg",
       "author": "Chef Lucas",
-      "publishedAt": "2025-05-28T11:00:00Z"
+      "publishedAt": "2025-08-10T12:30:00Z"
     },
     {
       "id": "r-0014",
@@ -169,7 +169,7 @@
       "servings": 12,
       "image": "/images/brownie.jpg",
       "author": "Vanessa Costa",
-      "publishedAt": "2025-06-03T15:00:00Z"
+      "publishedAt": "2025-08-01T17:00:00Z"
     },
     {
       "id": "r-0015",
@@ -181,7 +181,7 @@
       "servings": 2,
       "image": "/images/hamburguer.jpg",
       "author": "Chef Pedro",
-      "publishedAt": "2025-06-12T13:00:00Z"
+      "publishedAt": "2025-07-22T10:00:00Z"
     },
     {
       "id": "r-0016",
@@ -193,7 +193,7 @@
       "servings": 2,
       "image": "/images/salmao-legumes.jpg",
       "author": "Mariana Rocha",
-      "publishedAt": "2025-06-20T12:00:00Z"
+      "publishedAt": "2025-07-18T11:00:00Z"
     },
     {
       "id": "r-0017",
@@ -205,7 +205,7 @@
       "servings": 1,
       "image": "/images/tocino-ovos.jpg",
       "author": "André Lima",
-      "publishedAt": "2025-07-01T08:30:00Z"
+      "publishedAt": "2025-07-10T18:00:00Z"
     },
     {
       "id": "r-0018",
@@ -217,7 +217,7 @@
       "servings": 4,
       "image": "/images/pizza-margherita.jpg",
       "author": "Davide Rossi",
-      "publishedAt": "2025-07-10T18:00:00Z"
+      "publishedAt": "2025-07-01T08:30:00Z"
     },
     {
       "id": "r-0019",
@@ -229,7 +229,7 @@
       "servings": 4,
       "image": "/images/sopa-legumes.jpg",
       "author": "Clara Martins",
-      "publishedAt": "2025-07-18T11:00:00Z"
+      "publishedAt": "2025-06-20T12:00:00Z"
     },
     {
       "id": "r-0020",
@@ -241,7 +241,7 @@
       "servings": 6,
       "image": "/images/quiche-espinafre.jpg",
       "author": "Laura Pinto",
-      "publishedAt": "2025-07-22T10:00:00Z"
+      "publishedAt": "2025-06-12T13:00:00Z"
     },
     {
       "id": "r-0021",
@@ -253,7 +253,7 @@
       "servings": 6,
       "image": "/images/creme-brulee.jpg",
       "author": "Chef Lucie",
-      "publishedAt": "2025-08-01T17:00:00Z"
+      "publishedAt": "2025-06-03T15:00:00Z"
     },
     {
       "id": "r-0022",
@@ -265,7 +265,7 @@
       "servings": 6,
       "image": "/images/arroz-carreteiro.jpg",
       "author": "Toninho",
-      "publishedAt": "2025-08-10T12:30:00Z"
+      "publishedAt": "2025-05-28T11:00:00Z"
     },
     {
       "id": "r-0023",
@@ -277,7 +277,7 @@
       "servings": 2,
       "image": "/images/caesar-frango.jpg",
       "author": "Helena Santos",
-      "publishedAt": "2025-08-18T13:00:00Z"
+      "publishedAt": "2025-05-20T09:00:00Z"
     },
     {
       "id": "r-0024",
@@ -289,7 +289,7 @@
       "servings": 2,
       "image": "/images/camarao-alho-oleo.jpg",
       "author": "Rui Pereira",
-      "publishedAt": "2025-08-25T19:00:00Z"
+      "publishedAt": "2025-05-12T14:00:00Z"
     },
     {
       "id": "r-0025",
@@ -301,7 +301,7 @@
       "servings": 12,
       "image": "/images/panettone.jpg",
       "author": "Giovanna",
-      "publishedAt": "2025-09-01T09:00:00Z"
+      "publishedAt": "2025-05-01T10:00:00Z"
     },
     {
       "id": "r-0026",
@@ -313,7 +313,7 @@
       "servings": 4,
       "image": "/images/file-mignon.jpg",
       "author": "Chef Ricardo",
-      "publishedAt": "2025-09-10T20:00:00Z"
+      "publishedAt": "2025-04-22T07:00:00Z"
     },
     {
       "id": "r-0027",
@@ -325,7 +325,7 @@
       "servings": 6,
       "image": "/images/mousse-chocolate.jpg",
       "author": "Isabela",
-      "publishedAt": "2025-09-18T16:00:00Z"
+      "publishedAt": "2025-04-10T13:00:00Z"
     },
     {
       "id": "r-0028",
@@ -337,7 +337,7 @@
       "servings": 4,
       "image": "/images/caldo-verde.jpg",
       "author": "Dona Maria",
-      "publishedAt": "2025-09-25T18:30:00Z"
+      "publishedAt": "2025-04-01T08:00:00Z"
     },
     {
       "id": "r-0029",
@@ -349,7 +349,7 @@
       "servings": 1,
       "image": "/images/tapioca-queijo-coco.jpg",
       "author": "Sônia",
-      "publishedAt": "2025-10-02T09:00:00Z"
+      "publishedAt": "2025-03-18T10:00:00Z"
     },
     {
       "id": "r-0030",
@@ -361,7 +361,7 @@
       "servings": 2,
       "image": "/images/salada-grega.jpg",
       "author": "Andréa",
-      "publishedAt": "2025-10-10T12:00:00Z"
+      "publishedAt": "2025-03-12T09:30:00Z"
     },
     {
       "title": "Bolo de Chocolate",
@@ -373,7 +373,8 @@
         "1 xícara de chocolate em pó",
         "3 ovos"
       ],
-      "instructions": "Misture todos os ingredientes e asse por 40 minutos a 180°C."
+      "instructions": "Misture todos os ingredientes e asse por 40 minutos a 180°C.",
+      "publishedAt": "2025-03-05T11:00:00Z"
     },
     {
       "id": "r-0031",
@@ -407,7 +408,7 @@
         "description": "Receita rápida de tostada com bacon crocante e ovos mexidos cremosos. Perfeita para brunch.",
         "canonical": "/receitas/tocino-e-ovos-com-tatto"
       },
-      "publishedAt": "2025-10-31T14:50:07.821Z"
+      "publishedAt": "2025-02-21T12:00:00Z"
     },
     {
       "id": "r-0031",
@@ -441,7 +442,7 @@
         "description": "Receita rápida de tostada com bacon crocante e ovos mexidos cremosos. Perfeita para brunch.",
         "canonical": "/receitas/tocino-e-ovos-com-tatto"
       },
-      "publishedAt": "2025-10-31T15:00:02.989Z"
+      "publishedAt": "2025-02-10T09:00:00Z"
     },
     {
       "id": "r-0031",
@@ -475,42 +476,7 @@
         "description": "Receita rápida de tostada com bacon crocante e ovos mexidos cremosos. Perfeita para brunch.",
         "canonical": "/receitas/tocino-e-ovos-com-tatto"
       },
-      "publishedAt": "2025-10-31T15:12:42.826Z"
-    },
-    {
-      "id": "r-0031",
-      "slug": "maria",
-      "title": "maria",
-      "category": "café",
-      "description": "Tostadas com bacon crocante e ovos mexidos cremosos, finalizados com cebolinha.",
-      "prepTime": 15,
-      "servings": 2,
-      "image": "/images/tostada-bacon-ovos.jpg",
-      "author": "Casa da Manhã",
-      "ingredients": [
-        "4 fatias de bacon (tocino)",
-        "4 ovos",
-        "2 fatias de pão tostado",
-        "1 colher de sopa de manteiga",
-        "cebolinha a gosto",
-        "sal e pimenta"
-      ],
-      "steps": [
-        "Frite o bacon até ficar crocante e reserve.",
-        "Bata levemente os ovos com sal e pimenta; cozinhe em fogo baixo com manteiga até ficarem cremosos.",
-        "Monte sobre as tostadas, finalize com cebolinha e o bacon por cima."
-      ],
-      "tags": [
-        "café-da-manhã",
-        "rápido",
-        "conforto"
-      ],
-      "seo": {
-        "title": "Tostada de Bacon e Ovos Cremosos",
-        "description": "Receita rápida de tostada com bacon crocante e ovos mexidos cremosos. Perfeita para brunch.",
-        "canonical": "/receitas/tocino-e-ovos-com-tatto"
-      },
-      "publishedAt": "2025-10-31T16:09:08.869Z"
+      "publishedAt": "2025-01-15T10:30:00Z"
     }
   ]
 }
