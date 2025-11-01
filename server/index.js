@@ -22,22 +22,40 @@ const dataDir = path.join(__dirname, "..", "data");
 // GET /api/receitas - Lista todas as receitas
 app.get("/api/receitas", (req, res) => {
   try {
-    const filePath = path.join(dataDir, "recipes.json");
-    const raw = fs.readFileSync(filePath, "utf-8");
-    const data = JSON.parse(raw);
-
-    // Se há query de categoria, filtra as receitas
     const { category, tag } = req.query;
-    if (category) {
-      data.items = data.items.filter(
-        (recipe) => recipe.category.toLowerCase() === category.toLowerCase()
-      );
-    }
 
+    let data;
+    let items = [];
+
+    // Se há filtro de tag, lê do recipes_by_slug.json
     if (tag) {
-      data.items = data.items.filter((recipe) => 
+      const recipesBySlugPath = path.join(dataDir, "recipes_by_slug.json");
+      const raw = fs.readFileSync(recipesBySlugPath, "utf-8");
+      const recipesBySlug = JSON.parse(raw);
+
+      // Converte objeto em array e filtra por tag
+      items = Object.values(recipesBySlug).filter((recipe) =>
         recipe.tags?.some(t => t.toLowerCase() === tag.toLowerCase())
       );
+
+      data = {
+        total: items.length,
+        page: 1,
+        per_page: items.length,
+        items: items,
+      };
+    } else {
+      // Caso contrário, lê do recipes.json
+      const filePath = path.join(dataDir, "recipes.json");
+      const raw = fs.readFileSync(filePath, "utf-8");
+      data = JSON.parse(raw);
+
+      // Se há query de categoria, filtra as receitas
+      if (category) {
+        data.items = data.items.filter(
+          (recipe) => recipe.category.toLowerCase() === category.toLowerCase()
+        );
+      }
     }
 
     // Ordena as receitas pelo campo publishedAt (mais recente primeiro)
