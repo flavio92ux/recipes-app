@@ -1,4 +1,5 @@
 import { getTags, getRecipes } from '@/lib/api';
+import { tagMetadata } from '@/lib/seo';
 import RecipeList from '@/components/RecipeList';
 import { RecipeSummary } from '@/types/recipe';
 import { Metadata } from 'next';
@@ -22,45 +23,8 @@ export async function generateStaticParams(): Promise<{ tag: string }[]> {
 export async function generateMetadata({ params }: { params: Promise<{ tag: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
   const { tag } = resolvedParams;
-  const decodedTag = decodeURIComponent(tag);
 
-  return {
-    title: `Receitas com tag ${decodedTag} | Delícias na Cozinha`,
-    description: `Explore nossa coleção de receitas com a tag ${decodedTag}. Descubra pratos deliciosos e práticos para todas as ocasiões.`,
-    keywords: [
-      'receitas',
-      decodedTag,
-      'cozinha',
-      'culinária',
-      'gastronomia',
-    ],
-    openGraph: {
-      title: `Receitas com tag ${decodedTag} | Delícias na Cozinha`,
-      description: `Explore nossa coleção de receitas com a tag ${decodedTag}. Descubra pratos deliciosos e práticos para todas as ocasiões.`,
-      url: `https://deliciasnacozinha.com/tag/${tag}`,
-      siteName: 'Delícias na Cozinha',
-      images: [
-        {
-          url: `https://deliciasnacozinha.com/images/${tag}-og-image.jpg`,
-          width: 1200,
-          height: 630,
-          alt: `Receitas com tag ${decodedTag} - Delícias na Cozinha`,
-        },
-      ],
-      type: 'website',
-      locale: 'pt_BR',
-    },
-    alternates: {
-      canonical: `https://deliciasnacozinha.com/tag/${tag}`,
-    },
-    robots: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  };
+  return tagMetadata(tag);
 }
 
 export default async function TagPage({ params }: { params: Promise<{ tag: string }> }) {
