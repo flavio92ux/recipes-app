@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: 'Delícias na Cozinha',
     images: [
       {
-        url: 'https://deliciasnacozinha.com/og-image.jpg',
+        url: 'http://localhost:3000/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Delícias na Cozinha - Receitas Fáceis e Rápidas',
