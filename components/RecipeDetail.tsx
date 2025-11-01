@@ -36,6 +36,7 @@ export default function RecipeDetail({ r }: { r: Recipe }) {
             height={700}
             className="w-full h-64 object-cover rounded"
             priority={false}
+            title={r.title}
           />
         ) : (
           <div className="w-full h-64 bg-gray-100 rounded" />

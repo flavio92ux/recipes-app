@@ -6,13 +6,13 @@ export default function Footer() {
       <div className="max-w-5xl mx-auto px-4 py-6 text-sm text-gray-600 flex flex-col sm:flex-row justify-between items-center gap-4">
         {/* Links institucionais */}
         <div className="flex gap-4">
-          <Link href="/sobre" className="hover:text-orange-600">
+          <Link href="/sobre" className="hover:text-orange-600" title="Saiba mais sobre nós">
             Sobre
           </Link>
-          <Link href="/contato" className="hover:text-orange-600">
+          <Link href="/contato" className="hover:text-orange-600" title="Entre em contato conosco">
             Contato
           </Link>
-          <Link href="/politica-de-privacidade" className="hover:text-orange-600">
+          <Link href="/politica-de-privacidade" className="hover:text-orange-600" title="Leia nossa política de privacidade">
             Privacidade
           </Link>
         </div>

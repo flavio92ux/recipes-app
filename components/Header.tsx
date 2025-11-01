@@ -83,7 +83,7 @@ export default function Header({ categories }: { categories: { total: number; it
     <header className="border-b bg-white sticky top-0 z-50">
       <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
         {/* Logo */}
-        <Link href="/" className="text-2xl font-bold text-orange-600">
+        <Link href="/" className="text-2xl font-bold text-orange-600" title="Ir para página inicial">
           🍳 Receitas
         </Link>
 
@@ -94,6 +94,7 @@ export default function Header({ categories }: { categories: { total: number; it
               key={category}
               href={`/${category}`}
               className="hover:text-orange-600"
+              title={`Ver receitas da categoria ${category}`}
             >
               {category}
             </Link>
@@ -117,6 +118,7 @@ export default function Header({ categories }: { categories: { total: number; it
             <button
               type="submit"
               className="bg-orange-500 text-white px-3 py-1 hover:bg-orange-600 transition"
+              title="Buscar receitas"
             >
               🔍
             </button>
@@ -135,6 +137,7 @@ export default function Header({ categories }: { categories: { total: number; it
                         type="button"
                         onClick={() => handleSuggestionClick(suggestion.path)}
                         className="w-full text-left px-3 py-2 text-sm hover:bg-orange-50 transition"
+                        title={`Ver receita: ${suggestion.title}`}
                       >
                         {suggestion.title}
                       </button>
@@ -160,6 +163,7 @@ export default function Header({ categories }: { categories: { total: number; it
                 <Link
                   href={`/tag/${tag}`}
                   className="text-gray-700 hover:text-orange-600 transition"
+                  title={`Ver receitas com a tag ${tag}`}
                 >
                   #{tag}
                 </Link>

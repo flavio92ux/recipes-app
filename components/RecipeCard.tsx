@@ -16,6 +16,7 @@ export default function RecipeCard({ r }: { r: RecipeSummary }) {
           height={300}
           className="w-full h-48 object-cover"
           priority={false}
+          title={r.title}
         />
       ) : (
         <div className="w-full h-48 bg-gray-100" />
@@ -26,6 +27,7 @@ export default function RecipeCard({ r }: { r: RecipeSummary }) {
         <Link
           href={`/receitas/${r.slug}`}
           className="text-blue-600 text-sm font-medium hover:underline"
+          title={`Ver receita: ${r.title}`}
         >
           Ver receita
         </Link>
