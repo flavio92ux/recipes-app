@@ -8,7 +8,7 @@ import type { Recipe } from '@/types/recipe';
 export const homeMetadata: Metadata = {
   title: 'Delícias na Cozinha | Receitas Fáceis e Rápidas',
   description:
-    'Descubra receitas deliciosas e práticas para o dia a dia. Encontre opções doces, salgadas e muito mais para todas as ocasiões.',
+    'Descubra receitas deliciosas e práticas para o dia a dia. Encontre opções doces, salgadas, massas, pratos fit e muito mais para todas as ocasiões. Aprenda a cozinhar com receitas simples e saborosas.',
   keywords: [
     'receitas',
     'cozinha',
@@ -24,7 +24,7 @@ export const homeMetadata: Metadata = {
   openGraph: {
     title: 'Delícias na Cozinha | Receitas Fáceis e Rápidas',
     description:
-      'Descubra receitas deliciosas e práticas para o dia a dia. Encontre opções doces, salgadas e muito mais para todas as ocasiões.',
+      'Descubra receitas deliciosas e práticas para o dia a dia. Encontre opções doces, salgadas, massas, pratos fit e muito mais para todas as ocasiões. Aprenda a cozinhar com receitas simples e saborosas.',
     url: 'https://deliciasnacozinha.com',
     siteName: 'Delícias na Cozinha',
     images: [
@@ -90,7 +90,7 @@ export function recipeMetadata(recipe: Recipe): Metadata {
  */
 export function categoryMetadata(category: string): Metadata {
   const title = `Receitas de ${category} | Delícias na Cozinha`;
-  const description = `Descubra as melhores receitas de ${category} no Delícias na Cozinha. Receitas práticas e deliciosas para todas as ocasiões.`;
+  const description = `Descubra as melhores receitas de ${category} no Delícias na Cozinha. Explore nossa coleção completa de receitas práticas e deliciosas para todas as ocasiões. Encontre inspiração culinária e aprenda novas técnicas de preparo.`;
 
   return {
     title,
@@ -140,7 +140,7 @@ export function categoryMetadata(category: string): Metadata {
 export function tagMetadata(tag: string): Metadata {
   const decodedTag = decodeURIComponent(tag);
   const title = `Receitas com tag ${decodedTag} | Delícias na Cozinha`;
-  const description = `Explore nossa coleção de receitas com a tag ${decodedTag}. Descubra pratos deliciosos e práticos para todas as ocasiões.`;
+  const description = `Explore nossa coleção de receitas com a tag ${decodedTag}. Descubra pratos deliciosos e práticos para todas as ocasiões. Encontre receitas selecionadas que combinam com seu estilo de vida e preferências culinárias.`;
 
   return {
     title,
@@ -191,7 +191,7 @@ export function homeJsonLd(): string {
     '@type': 'WebSite',
     url: 'https://deliciasnacozinha.com/',
     name: 'Delícias na Cozinha',
-    description: 'Descubra receitas deliciosas e práticas para o dia a dia.',
+    description: 'Descubra receitas deliciosas e práticas para o dia a dia. Encontre opções doces, salgadas, massas, pratos fit e muito mais para todas as ocasiões.',
   };
 
   return JSON.stringify(ld);

@@ -156,7 +156,7 @@ export default function Header({ categories }: { categories: { total: number; it
 
       <aside className="hidden sm:block border-t bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 py-2">
-          <h3 className="text-sm font-semibold text-gray-600 mb-1">Temas</h3>
+          <p className="text-sm font-semibold text-gray-600 mb-1">Temas</p>
           <ul className="flex flex-wrap gap-3 text-sm">
             {tags.map((tag) => (
               <li key={tag}>

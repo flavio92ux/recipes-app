@@ -39,6 +39,7 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
   return (
     <section>
       <h1 className="text-2xl font-bold mb-4">Receitas com tag: {decodedTag}</h1>
+      <h2 className="text-lg text-gray-600 mb-6">Explore nossa coleção de receitas deliciosas da tag {decodedTag}</h2>
 
       {items.length === 0 ? (
         <p>Nenhuma receita encontrada com a tag &quot;{decodedTag}&quot;.</p>
