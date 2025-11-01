@@ -52,6 +52,33 @@ app.get("/api/receitas", (req, res) => {
   }
 });
 
+// GET /api/search - Busca receitas por título
+app.get("/api/search", (req, res) => {
+  try {
+    const { q } = req.query;
+
+    if (!q || q.trim() === "") {
+      return res.status(400).json({ error: "Parâmetro 'q' é obrigatório" });
+    }
+
+    const filePath = path.join(dataDir, "recipes.json");
+    const raw = fs.readFileSync(filePath, "utf-8");
+    const data = JSON.parse(raw);
+
+    const results = data.items
+      .filter((recipe) => recipe.title.toLowerCase().includes(q.toLowerCase()))
+      .map((recipe) => ({
+        title: recipe.title,
+        path: `/receitas/${recipe.slug}`,
+      }));
+
+    res.json({ total: results.length, items: results });
+  } catch (error) {
+    console.error("Erro ao buscar receitas:", error);
+    res.status(500).json({ error: "Erro ao buscar receitas" });
+  }
+});
+
 // GET /api/receitas/:slug - Retorna uma receita específica
 app.get("/api/receitas/:slug", (req, res) => {
   try {
