@@ -2,7 +2,7 @@
 
 ## 👤 Autor
 **Nome:** Flavio Franco  
-**Data de entrega:** 2/nov
+**Data de entrega:** 3/nov
 
 ---
 
@@ -131,5 +131,57 @@ npm run dev     # inicia frontend (porta 3000)
 
 # 3. Build de produção
 npm run build && npm start
+
+---
+
+## 📦 12. Resultado do build
+
+O build foi gerado com sucesso usando **Next.js 16.0.1 (Turbopack)** e o ambiente `.env.local`.
+
+```bash
+$ npm run build
+
+> recipes-app@0.1.0 build
+> next build
+
+▲ Next.js 16.0.1 (Turbopack)
+- Environments: .env.local
+
+Creating an optimized production build ...
+✔ Compiled successfully in 2.8s
+✔ Finished TypeScript in 2.5s
+✔ Collecting page data in 488.4ms
+✔ Generating static pages (51/51) in 876.7ms
+✔ Finalizing page optimization in 11.9ms
+
+Route (app)                                Revalidate  Expire
+┌ ○ /                                      1m           1y
+├ ○ /_not-found                            1h           1y
+├ ○ /[category]                            1m           1y
+│  ├ /doce
+│  ├ /massa
+│  ├ /fit
+│  [+5 more paths]
+├ ○ /api/revalidate                        1h           1y
+├ ○ /contato                               1h           1y
+├ ○ /politica-de-privacidade               1h           1y
+├ ○ /receitas/[slug]                       1m           1y
+│  ├ /receitas/pudim-de-leite-ninho
+│  ├ /receitas/bolo-de-cenoura-com-cobertura-de-chocolate
+│  ├ /receitas/lasanha-de-frango-com-catupriy
+│  [+31 more paths]
+├ ○ /robots.txt                            1m           1y
+├ ○ /sitemap.xml                           1m           1y
+├ ○ /sobre                                 1h           1y
+└ ○ /tag/[tag]                             1m           1y
+  ├ /tag/sobremesa
+  ├ /tag/cremosa
+  ├ /tag/festa
+  [+26 more paths]
+
+○  (Static)   prerendered as static content  
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)  
+ƒ  (Dynamic)  server-rendered on demand
+
 
 
