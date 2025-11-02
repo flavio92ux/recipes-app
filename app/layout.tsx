@@ -4,12 +4,15 @@ import Footer from '@/components/Footer';
 import StructuredData from '@/components/StructuredData';
 import { homeMetadata } from '@/lib/seo';
 import { Metadata } from 'next';
-import { getCategories } from '@/lib/api';
+import { getCategories, getTags } from '@/lib/api';
 
 export const metadata: Metadata = homeMetadata;
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const categories = await getCategories();
+  const [categories, tags] = await Promise.all([
+    getCategories(),
+    getTags()
+  ]);
 
   return (
     <html lang="pt-BR">
@@ -26,7 +29,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <StructuredData />
 
         {/* Cabeçalho principal */}
-        <Header categories={categories} />
+        <Header categories={categories} tags={tags} />
 
         {/* Conteúdo principal */}
         <main id="conteudo-principal" role="main" className="flex-grow max-w-5xl mx-auto p-4">

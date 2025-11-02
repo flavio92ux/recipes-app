@@ -3,38 +3,24 @@
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { getTags } from '@/lib/api';
 
 interface SearchResult {
   title: string;
   path: string;
 }
 
-export default function Header({ categories }: { categories: { total: number; items: string[] } }) {
+interface HeaderProps {
+  categories: { total: number; items: string[] };
+  tags: { total: number; items: string[] };
+}
+
+export default function Header({ categories, tags }: HeaderProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState<SearchResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  const [tags, setTags] = useState<string[]>([]);
-
-  useEffect(() => {
-    const loadTags = async () => {
-      try {
-        const data = await getTags();
-
-        if (data && data.items) {
-          setTags(data.items.slice(0, 13));
-        }
-      } catch (error) {
-        console.error('Erro ao carregar tags:', error);
-        setTags([]);
-      }
-    };
-    
-    loadTags();
-  }, []);
 
   useEffect(() => {
     const timer = setTimeout(async () => {
@@ -173,7 +159,7 @@ export default function Header({ categories }: { categories: { total: number; it
         <div className="max-w-5xl mx-auto px-4 py-2">
           <p className="text-sm font-semibold text-gray-600 mb-1">Temas</p>
           <ul className="flex flex-wrap gap-3 text-sm">
-            {tags.map((tag) => (
+            {tags.items.slice(0, 13).map((tag) => (
               <li key={tag}>
                 <Link
                   href={`/tag/${tag}`}
