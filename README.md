@@ -1,82 +1,135 @@
-# **README-DECISOES.md**
+# **Mini-Portal de Receitas — Desafio Técnico (Front-end / Next.js)**
 
-## **Projeto: Mini-Vertical “Receitas” — Teste Técnico Frontend Sênior**
-
-### **👤 Autor**
-
-**Nome:**
-
-**Data de início:**
-
-**Data de entrega:**
+## 👤 Autor
+**Nome:** Flavio Franco  
+**Data de entrega:** 2/nov
 
 ---
 
-## **🧱 1\. Visão Geral do Projeto**
+## 🧱 1. Visão geral do projeto
+O objetivo foi construir um **micro-portal de receitas** inspirado em um CMS headless, com foco em **performance, SEO técnico e escalabilidade**, simulando a estrutura de um grande portal de notícias.
 
-Descreva o objetivo do projeto e a ideia geral da solução que você desenvolveu.
+A aplicação foi desenvolvida em **Next.js (App Router)**, consumindo dados a partir de **JSONs locais**.  
+As decisões priorizaram **renderização híbrida (SSG/ISR)**, **cache com revalidação** e **boas práticas de SEO**.
 
-* Contexto do desafio:  
-   *(ex: Construção de um mini portal de receitas com foco em performance, SEO e escalabilidade.)*
+---
 
-* Principais decisões de arquitetura:  
-  * Framework/base:  
-  * Estratégia de renderização escolhida:  
-  * Abordagem de cache adotada:  
-  * Estratégia de SEO:
+## ⚙️ 2. Estrutura do projeto
+app/ → rotas (home, categorias, slug, políticas)
+components/ → UI reutilizável (Header, Footer, RecipeCard/List/Detail)
+lib/ → API simulada e utilitários de SEO
+data/ → JSONs simulando API headless
+types/ → Tipagens (Recipe, RecipeSummary)
 
-## **⚙️ 2\. Estrutura do Projeto**
 
-Explique brevemente como você organizou os diretórios, rotas e módulos.
+- Mantive a camada de dados isolada (`lib/api.ts` → `data/`) para permitir troca futura por CMS real.
+- Os componentes seguem o padrão **server/client boundary** do App Router.
 
-**Comentários sobre a estrutura:**
+---
 
-* *(Ex: Mantive a camada de dados isolada de rotas para facilitar troca de fonte real → CMS ou indexador.)*
+## 🧩 3. Renderização (SSR / SSG / ISR)
 
-## **🧩 3\. Renderização (SSR, SSG, ISR, etc.)**
+| Página | Estratégia | Motivo |
+|--------|-------------|--------|
+| `/` (home) | **SSG (static)** | Performance e escalabilidade — TTFB mínimo |
+| `/[category]` | **SSR / on-demand static** | Número alto de categorias, renderização sob demanda |
+| `/receitas/[slug]` | **ISR (revalidate=60)** | Balanceia frescor e custo de rebuild |
+| `/tag/[tag]` | **SSG + dynamicParams** | Baixo custo, cacheável |
 
-- Explique **como e por que** escolheu a estratégia de renderização em cada parte.  
-- **Por que essa escolha é adequada?** *(Explique trade-offs de consistência vs. performance.)*
+> Trade-off: usar ISR evita rebuilds totais e mantém conteúdo fresco via revalidação seletiva.
 
-## **⚡️ 4\. Estratégia de Cache e Headers**
+---
 
-Detalhe onde e como o cache é aplicado — tanto no HTML quanto nos dados.
+## ⚡️ 4. Estratégia de cache e headers
 
-## **🔍 5\. SEO (básico e técnico intermediário)**
+- Cada `fetch` usa `next: { revalidate: 60, tags: ['recipes', 'category'] }`.
+- Endpoint `/api/revalidate` permite invalidação seletiva:
+  - `POST /api/revalidate?tag=recipes&secret=...`
+  - `POST /api/revalidate?path=/receitas/bolo-de-cenoura`
+- HTML gerado via SSG/ISR é servido com cache controlado pelo Next e CDN.
+- Estratégia simulada, mas equivalente à produção com Redis/edge cache.
 
-Mostre como atendeu aos requisitos de SEO.
+---
 
-## **🧮 6\. Performance**
+## 🔍 5. SEO (básico e técnico)
 
-Liste métricas observadas e decisões para atingir performance.
+- `<title>` e `<meta description>` dinâmicos via `Metadata` do Next.
+- `openGraph`, `twitter` e `canonical` configurados em `lib/seo.ts`.
+- **JSON-LD (schema.org)**:
+  - `@type: WebSite` na home.
+  - `@type: Recipe` em cada receita.
+- Faltam: `robots.txt` e `sitemap` (em produção seriam gerados dinamicamente).
 
-## **🔗 7\. API Interna**
+---
 
-- Descreva o funcionamento e o comportamento das APIs internas.  
-- Descreva as Decisões:
+## 🧮 6. Performance
 
-## **🧰 8\. Tecnologias e Dependências**
+- Imagens otimizadas com `next/image` e `lazy loading` automático.
+- Somente `Header` é client-component (busca/autocomplete).
+- `app/page.tsx` marcado como `force-static` → TTFB baixo.
+- TailwindCSS elimina CSS não utilizado (`content` configurado).
+- Build: `next build` → output otimizado em ≈ 120 kB.
 
-Liste o stack e justifique brevemente as escolhas.
+---
 
-## **🔐 9\. Considerações de Segurança**
+## 🔗 7. API interna
 
-O que foi pensado em relação a segurança e dados.
+A API é simulada localmente:
+- Dados em `data/*.json`.
+- Funções de fetch em `lib/api.ts`.
+- Endpoint mock opcional (`server/index.js`) na porta **3001**.
 
-## **🧭 10\. Trade-offs e Próximos Passos**
+Scripts disponíveis:
+- `npm run api` → inicia API mock.
+- `npm run dev:all` → executa API + Next em paralelo.
 
-O que faria diferente em um ambiente de produção real?
+---
 
-## **🧪 11\. Como Rodar o Projeto**
+## 🧰 8. Tecnologias e dependências
 
-Descreva como rodar o projeto
+- **Next.js 16 (App Router)**
+- **TypeScript 5**
+- **TailwindCSS 3 + PostCSS**
+- **React 19**
+- **Express + CORS** (para API mock local)
+- **ESLint + Config Next**
 
-## **🎥 12\. (Opcional) Vídeo de Demonstração**
+Motivo das escolhas:
+- Modernidade e compatibilidade com RSC/ISR.
+- Tailwind pela velocidade e legibilidade do código de estilo.
 
-Grave até 5 minutos mostrando:
+---
 
-* O site em funcionamento (lista \+ detalhe)  
-* Headers (Cache-Control, ETag, canonical)  
-* Teste de revalidação ou cache hit/miss  
-* Explicação resumida das decisões
+## 🔐 9. Segurança
+- Endpoint `/api/revalidate` protegido por `REVALIDATE_SECRET`.
+- Nenhum dado sensível armazenado localmente.
+- Busca client-side sanitizada (sem interpolação direta no HTML).
+
+---
+
+## 🧭 10. Trade-offs e próximos passos
+- Em produção, os JSONs migrariam para CMS (AEM, Contentful, etc.).
+- Revalidação baseada em **eventos de publicação**.
+- Monitoramento de Core Web Vitals via WebPageTest/Cloudflare Analytics.
+- Testes unitários com Jest (JSON-LD, componentes isolados).
+- Adicionar A11y completa e sitemap dinâmico.
+
+---
+
+## 🧪 11. Como rodar o projeto
+
+```bash
+# 1. Instalar dependências
+npm install
+
+# 2. Rodar servidor mock (API local) + frontend
+npm run dev:all
+
+# ou separadamente:
+npm run api     # inicia API local (porta 3001)
+npm run dev     # inicia frontend (porta 3000)
+
+# 3. Build de produção
+npm run build && npm start
+
 
