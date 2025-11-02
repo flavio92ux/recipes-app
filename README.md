@@ -235,6 +235,56 @@ types/
 
 ---
 
+## 🔎 6.1 Sistema de Busca
+
+### Implementação
+- **Client Component** isolado no Header
+- **Busca em tempo real** com debounce de 300ms
+- **Cache-Control** otimizado para resultados
+- **Acessibilidade** completa com ARIA
+
+### Vantagens da Abordagem
+1. **Performance**:
+   - Busca client-side evita requisições desnecessárias
+   - Debounce reduz carga no servidor
+   - Cache de resultados no edge/CDN
+   - Zero layout shift durante digitação
+
+2. **UX (Experiência do Usuário)**:
+   - Feedback instantâneo ao digitar
+   - Sugestões em tempo real
+   - Preview de resultados sem reload
+   - Navegação por teclado (↑↓ + Enter)
+
+3. **Acessibilidade**:
+   ```tsx
+   // Implementação com WAI-ARIA
+   <div role="combobox" aria-expanded={showSuggestions}>
+     <input
+       role="searchbox"
+       aria-autocomplete="list"
+       aria-controls="search-results"
+     />
+     <ul
+       role="listbox"
+       id="search-results"
+       aria-label="Sugestões de busca"
+     >
+   ```
+
+4. **Manutenibilidade**:
+   - Lógica isolada em um único componente
+   - Tipagem forte com TypeScript
+   - Fácil extensão para novos recursos
+   - Separação clara client/server
+
+### Trade-offs Considerados
+- ✅ Client-side vs Server-side search
+- ✅ Tempo real vs Submit manual
+- ✅ Cache vs Freshness
+- ✅ Bundle size vs Funcionalidade
+---
+
 ## 7. API interna
 
 A API é simulada localmente:
