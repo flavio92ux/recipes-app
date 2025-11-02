@@ -122,10 +122,10 @@ types/
 
 | Página | Estratégia | Motivo |
 |--------|-------------|--------|
-| `/` (home) | **SSG + ISR (24h)** | Conteúdo estável, atualização diária é suficiente |
-| `/[category]` | **SSG + ISR (12h)** | Categorias mudam pouco, duas atualizações por dia são adequadas |
-| `/receitas/[slug]` | **SSG + ISR (24h)** | Receitas raramente são editadas após publicação |
-| `/tag/[tag]` | **SSG + ISR (12h)** | Tags mudam pouco, duas atualizações por dia são adequadas |
+| `/` (home) | **SSG + ISR (1h)** | Receitas em destaque podem mudar, layout raramente muda |
+| `/[category]` | **SSG + ISR (1h)** | Receitas em destaque podem mudar, layout raramente muda |
+| `/receitas/[slug]` | **SSG + ISR (2h)** | Receitas raramente são editadas após publicação |
+| `/tag/[tag]` | **SSG + ISR (1h)** | Receitas por tag podem mudar, mas muda pouco |
 | Páginas estáticas | **SSG (7d)** | Conteúdo institucional, raramente alterado |
 
 > Trade-off: Priorizando performance e economia de recursos, já que o conteúdo é naturalmente estável.

@@ -4,8 +4,8 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
 // Tempos de revalidação em segundos
 const REVALIDATE_TIMES = {
-  RECIPE: 24 * 60 * 60,      // 24 horas
-  LISTING: 12 * 60 * 60,     // 12 horas
+  RECIPE: 2 * 60 * 60,      // 2 horas
+  LISTING: 60 * 60,     // 1 hora
   STATIC: 7 * 24 * 60 * 60,  // 7 dias
 } as const;
 
