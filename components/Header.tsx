@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { getTags } from '@/lib/api';
 
 interface SearchResult {
   title: string;
@@ -16,8 +17,24 @@ export default function Header({ categories }: { categories: { total: number; it
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const [tags, setTags] = useState<string[]>([]);
 
-  const tags = ['rápido', 'festa', 'saudável', 'conforto', 'verão', 'sobremesa'];
+  useEffect(() => {
+    const loadTags = async () => {
+      try {
+        const data = await getTags();
+
+        if (data && data.items) {
+          setTags(data.items.slice(0, 13));
+        }
+      } catch (error) {
+        console.error('Erro ao carregar tags:', error);
+        setTags([]);
+      }
+    };
+    
+    loadTags();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(async () => {
@@ -25,7 +42,7 @@ export default function Header({ categories }: { categories: { total: number; it
         setIsLoading(true);
         try {
           const response = await fetch(
-            `http://localhost:3001/api/search?q=${encodeURIComponent(searchQuery)}`
+            `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/search?q=${encodeURIComponent(searchQuery)}`
           );
           const data = await response.json();
           setSuggestions(data.items || []);
