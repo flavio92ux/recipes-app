@@ -198,16 +198,18 @@ app.post("/api/receitas", (req, res) => {
 // GET /api/tags - Retorna lista de tags
 app.get("/api/tags", (req, res) => {
   try {
-    const filePath = path.join(__dirname, "../data/recipes.json");
+    const filePath = path.join(dataDir, "recipes_by_slug.json");
     const raw = fs.readFileSync(filePath, "utf-8");
-    const data = JSON.parse(raw);
+    const recipes = JSON.parse(raw);
 
-    // Extrai todas as categorias únicas das receitas
-    const tags = Array.from(
-      new Set(data.items.map((recipe) => recipe.category))
-    );
+    // Extrai todas as tags únicas das receitas
+    const allTags = Object.values(recipes)
+      .flatMap(recipe => recipe.tags || [])
+      .filter(Boolean);
 
-    res.json({ tags });
+    const tags = Array.from(new Set(allTags));
+
+    res.json({ total: tags.length, items: tags });
   } catch (error) {
     console.error("Erro ao carregar tags:", error);
     res.status(500).json({ error: "Erro ao carregar tags" });
