@@ -6,7 +6,7 @@
 
 ---
 
-## 🧱 1. Visão geral do projeto
+## 1. Visão geral do projeto
 O objetivo foi construir um **micro-portal de receitas** inspirado em um CMS headless, com foco em **performance, SEO técnico e escalabilidade**, simulando a estrutura de um grande portal de notícias.
 
 A aplicação foi desenvolvida em **Next.js (App Router)**, consumindo dados a partir de **JSONs locais**.  
@@ -15,19 +15,68 @@ As decisões priorizaram **renderização híbrida (SSG/ISR)**, **cache com reva
 ---
 
 ## ⚙️ 2. Estrutura do projeto
-app/ → rotas (home, categorias, slug, políticas)
-components/ → UI reutilizável (Header, Footer, RecipeCard/List/Detail)
-lib/ → API simulada e utilitários de SEO
-data/ → JSONs simulando API headless
-types/ → Tipagens (Recipe, RecipeSummary)
 
+```
+app/
+├── layout.tsx          → Layout principal com metadata global
+├── page.tsx           → Página inicial com lista de receitas
+├── [category]/        → Rota dinâmica para categorias
+├── receitas/[slug]/   → Rota dinâmica para receitas individuais
+├── tag/[tag]/         → Rota dinâmica para tags
+├── contato/          → Página estática de contato
+├── sobre/           → Página estática institucional
+├── politica-de-privacidade/ → Página estática de políticas
+└── api/
+    └── revalidate/   → Endpoint para invalidação de cache
 
-- Mantive a camada de dados isolada (`lib/api.ts` → `data/`) para permitir troca futura por CMS real.
-- Os componentes seguem o padrão **server/client boundary** do App Router.
+components/
+├── Header.tsx        → Navegação e busca (client component)
+├── Footer.tsx        → Rodapé (server component)
+├── RecipeCard.tsx    → Card de receita para listagens
+├── RecipeList.tsx    → Grid responsivo de receitas
+├── RecipeDetail.tsx  → Exibição completa da receita
+└── StructuredData.tsx → Componente para JSON-LD
+
+lib/
+├── api.ts           → Cliente para API com cache configurado
+└── seo.ts          → Funções para metadata e schema.org
+
+data/               → Simulação de CMS headless
+├── recipes.json     → Lista resumida de receitas
+└── recipes_by_slug.json → Dados completos das receitas
+
+server/               → Simulação de API headless
+├── index.js          → Api node onde é feita a interface com CMS headless
+
+types/
+├── recipe.ts        → Interfaces Recipe e RecipeSummary
+└── global.d.ts      → Declarações globais de tipo
+```
+
+### Pontos-chave da arquitetura:
+
+1. **Separação de Responsabilidades**:
+   - `app/`: Rotas e pages com metadata específica
+   - `components/`: UI reutilizável e isolada
+   - `lib/`: Lógica de negócios e utilitários
+   - `data/`: Camada de dados simulada
+   - `types/`: Definições de tipos compartilhados
+
+2. **Padrões Aplicados**:
+   - Server/Client Components claramente definidos
+   - Metadata e SEO em cada nível apropriado
+   - Cache e revalidação configurados por tipo de conteúdo
+   - Tipagem forte em toda a aplicação
+
+3. **Princípios de Design**:
+   - Desacoplamento da fonte de dados (fácil migração para CMS)
+   - Componentes reutilizáveis e coesos
+   - Rotas dinâmicas com parâmetros tipados
+   - Separação clara entre UI e lógica de negócios
 
 ---
 
-## 🧩 3. Renderização (SSR / SSG / ISR)
+## 3. Renderização (SSR / SSG / ISR)
 
 | Página | Estratégia | Motivo |
 |--------|-------------|--------|
@@ -41,7 +90,7 @@ types/ → Tipagens (Recipe, RecipeSummary)
 
 ---
 
-## ⚡️ 4. Estratégia de cache e headers
+## 4. Estratégia de cache e headers
 
 - Cada `fetch` usa cache e revalidação otimizados para o tipo de conteúdo:
   - Receitas: 24 horas de cache (`revalidate: 86400`)
@@ -58,18 +107,86 @@ types/ → Tipagens (Recipe, RecipeSummary)
 
 ---
 
-## 🔍 5. SEO (básico e técnico)
+## 5. SEO e Otimizações
 
-- `<title>` e `<meta description>` dinâmicos via `Metadata` do Next.
-- `openGraph`, `twitter` e `canonical` configurados em `lib/seo.ts`.
-- **JSON-LD (schema.org)**:
-  - `@type: WebSite` na home.
-  - `@type: Recipe` em cada receita.
-- Faltam: `robots.txt` e `sitemap` (em produção seriam gerados dinamicamente).
+### 5.1 Metadata e Tags Essenciais
+- **Metadata Dinâmico** via API do Next.js 13+:
+  - `<title>` otimizado por página/contexto
+  - `<meta description>` com descrições únicas e relevantes
+  - `<link rel="canonical">` prevenindo conteúdo duplicado
+  - `<meta name="robots">` com diretivas apropriadas
+
+### 5.2 Social Media e OpenGraph
+- **OpenGraph completo** para compartilhamento em redes sociais:
+  ```typescript
+  openGraph: {
+    title, description, url, siteName,
+    images: [{ url, width, height, alt }],
+    locale: 'pt_BR',
+    type: 'website' | 'article'
+  }
+  ```
+- **Twitter Cards** para preview rico no Twitter:
+  - `twitter:card`: 'summary_large_image'
+  - Título e descrição otimizados
+  - Imagens dimensionadas corretamente
+
+### 5.3 Estruturação de Dados (schema.org)
+- **JSON-LD** implementado para diferentes contextos:
+  ```typescript
+  // Home page
+  WebSite: {
+    name: 'Delícias na Cozinha',
+    description: '...',
+    url: '...'
+  }
+
+  // Páginas de receitas
+  Recipe: {
+    name, author, datePublished,
+    recipeCategory, recipeCuisine,
+    prepTime, recipeYield,
+    recipeIngredient, recipeInstructions
+  }
+  ```
+
+### 5.4 URLs e Navegação
+- **URLs Amigáveis**:
+  - `/receitas/[slug]` → URLs descritivas
+  - `/[category]` → Categorias sem prefixos
+  - `/tag/[tag]` → Taxonomia clara
+- **Sitemap XML** dinâmico (`/sitemap.xml`):
+  - Todas as receitas com prioridade 0.8
+  - Categorias com prioridade 0.7
+  - Tags com prioridade 0.6
+  - Páginas estáticas com prioridade 0.5
+
+### 5.5 Performance SEO
+- **Core Web Vitals** otimizados:
+  - LCP melhorado com SSG/ISR
+  - CLS zero com dimensões de imagem pré-definidas
+  - FID minimizado com hidratação seletiva
+- **Mobile-first** com design responsivo
+- **Semântica HTML5** com landmarks ARIA
+- **Cache inteligente** com revalidação apropriada
+
+### 5.6 Acessibilidade (impacta SEO)
+- Landmarks ARIA apropriados (`banner`, `main`, `navigation`)
+- Hierarquia de headings correta (h1 → h6)
+- Alt text em imagens
+- Links descritivos
+- Contraste de cores adequado
+
+### 5.7 Internacionalização
+- `lang="pt-BR"` configurado no HTML
+- Suporte a caracteres especiais
+- Formatação de datas localizada
+- OpenGraph com `locale` definido
+- Conteúdo em português otimizado
 
 ---
 
-## 🧮 6. Performance
+## 6. Performance
 
 - Imagens otimizadas com `next/image` e `lazy loading` automático.
 - Somente `Header` é client-component (busca/autocomplete).
@@ -79,7 +196,7 @@ types/ → Tipagens (Recipe, RecipeSummary)
 
 ---
 
-## 🔗 7. API interna
+## 7. API interna
 
 A API é simulada localmente:
 - Dados em `data/*.json`.
@@ -92,7 +209,7 @@ Scripts disponíveis:
 
 ---
 
-## 🧰 8. Tecnologias e dependências
+## 8. Tecnologias e dependências
 
 - **Next.js 16 (App Router)**
 - **TypeScript 5**
@@ -107,23 +224,21 @@ Motivo das escolhas:
 
 ---
 
-## 🔐 9. Segurança
+## 9. Segurança
 - Endpoint `/api/revalidate` protegido por `REVALIDATE_SECRET`.
 - Nenhum dado sensível armazenado localmente.
 - Busca client-side sanitizada (sem interpolação direta no HTML).
 
 ---
 
-## 🧭 10. Trade-offs e próximos passos
-- Em produção, os JSONs migrariam para CMS (AEM, Contentful, etc.).
+## 10. Trade-offs e próximos passos
+- Em produção, os JSONs migrariam para algum CMS.
 - Revalidação baseada em **eventos de publicação**.
-- Monitoramento de Core Web Vitals via WebPageTest/Cloudflare Analytics.
 - Testes unitários com Jest (JSON-LD, componentes isolados).
-- Adicionar A11y completa e sitemap dinâmico.
 
 ---
 
-## 🧪 11. Como rodar o projeto
+## 11. Como rodar o projeto
 
 ```bash
 # 1. Instalar dependências
