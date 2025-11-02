@@ -1,33 +1,89 @@
-import fs from 'fs';
-import path from 'path';
 import type { Recipe, RecipeSummary } from '@/types/recipe';
 
-/**
- * Caminho base para os arquivos de dados locais.
- */
-const dataDir = path.join(process.cwd(), 'data');
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
-/**
- * Retorna todas as receitas (resumo).
- * Simula uma requisição GET /api/receitas
- */
-export async function getRecipes(): Promise<{ total: number; items: RecipeSummary[] }> {
-  const filePath = path.join(dataDir, 'recipes.json');
-  const raw = fs.readFileSync(filePath, 'utf-8');
-  const json = JSON.parse(raw);
+// Tempos de revalidação em segundos
+const REVALIDATE_TIMES = {
+  RECIPE: 2 * 60 * 60,      // 2 horas
+  LISTING: 60 * 60,     // 1 hora
+  STATIC: 7 * 24 * 60 * 60,  // 7 dias
+} as const;
+
+interface FetchOptions extends RequestInit {
+  next?: {
+    revalidate?: number | false;
+    tags?: string[];
+  };
+}
+
+function getFetchOptions(revalidate: number, tags: string[]): FetchOptions {
   return {
-    total: json.total,
-    items: json.items,
+    next: { revalidate, tags },
+    headers: {
+      'Cache-Control': `public, s-maxage=${revalidate}, stale-while-revalidate=${revalidate * 2}`,
+    },
   };
 }
 
 /**
- * Retorna uma receita completa pelo slug.
- * Simula uma requisição GET /api/receitas/[slug]
+ * Retorna todas as receitas (resumo)
+ */
+export async function getRecipes(
+  category?: string,
+  tag?: string
+): Promise<{ total: number; items: RecipeSummary[] }> {
+  const params = new URLSearchParams();
+  if (category) params.append('category', category);
+  if (tag) params.append('tag', tag);
+
+  const tags = ['recipes'];
+  if (category) tags.push(`category:${category}`);
+  if (tag) tags.push(`tag:${tag}`);
+
+  const response = await fetch(
+    `${API_BASE_URL}/api/receitas${params.toString() ? `?${params}` : ''}`,
+    getFetchOptions(REVALIDATE_TIMES.LISTING, tags)
+  );
+
+  if (!response.ok) throw new Error(`Erro ao buscar receitas: ${response.statusText}`);
+  return response.json();
+}
+
+/**
+ * Retorna uma receita completa pelo slug
  */
 export async function getRecipeBySlug(slug: string): Promise<Recipe | null> {
-  const filePath = path.join(dataDir, 'recipes_by_slug.json');
-  const raw = fs.readFileSync(filePath, 'utf-8');
-  const map = JSON.parse(raw);
-  return map[slug] ?? null;
+  const response = await fetch(
+    `${API_BASE_URL}/api/receitas/${slug}`,
+    getFetchOptions(REVALIDATE_TIMES.RECIPE, [`recipe:${slug}`])
+  );
+  if (!response.ok) return null;
+  return response.json();
+}
+
+/**
+ * Categorias e tags
+ */
+export async function getCategories() {
+  const response = await fetch(
+    `${API_BASE_URL}/api/categorias`,
+    getFetchOptions(REVALIDATE_TIMES.LISTING, ['categories'])
+  );
+  return response.json();
+}
+
+export async function getTags() {
+  const response = await fetch(
+    `${API_BASE_URL}/api/tags`,
+    getFetchOptions(REVALIDATE_TIMES.LISTING, ['tags'])
+  );
+  return response.json();
+}
+
+export async function getSlugs() {
+  const response = await fetch(
+    `${API_BASE_URL}/api/slugs`,
+    getFetchOptions(3600, ['slugs'])
+  );
+  return response.json();
 }

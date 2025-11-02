@@ -2,20 +2,16 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="border-t bg-gray-50 mt-10">
+    <footer role="contentinfo" className="border-t bg-gray-50 mt-10">
       <div className="max-w-5xl mx-auto px-4 py-6 text-sm text-gray-600 flex flex-col sm:flex-row justify-between items-center gap-4">
         {/* Links institucionais */}
-        <div className="flex gap-4">
-          <Link href="/sobre" className="hover:text-orange-600">
-            Sobre
-          </Link>
-          <Link href="/contato" className="hover:text-orange-600">
-            Contato
-          </Link>
-          <Link href="/politica-de-privacidade" className="hover:text-orange-600">
-            Privacidade
-          </Link>
-        </div>
+        <nav aria-label="Links institucionais">
+          <ul className="flex gap-4">
+            <li><Link href="/sobre" className="hover:text-orange-600">Sobre</Link></li>
+            <li><Link href="/contato" className="hover:text-orange-600">Contato</Link></li>
+            <li><Link href="/politica-de-privacidade" className="hover:text-orange-600">Privacidade</Link></li>
+          </ul>
+        </nav>
 
         {/* Direitos autorais */}
         <p className="text-center sm:text-right">

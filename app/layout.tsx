@@ -1,21 +1,38 @@
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import StructuredData from '@/components/StructuredData';
+import { homeMetadata } from '@/lib/seo';
+import { Metadata } from 'next';
+import { getCategories, getTags } from '@/lib/api';
 
-export const metadata = {
-  title: 'Receitas',
-  description: 'Mini portal de receitas - desafio técnico',
-};
+export const metadata: Metadata = homeMetadata;
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const [categories, tags] = await Promise.all([
+    getCategories(),
+    getTags()
+  ]);
+
   return (
     <html lang="pt-BR">
-      <body className="min-h-screen flex flex-col bg-white text-slate-800">
-        {/* Cabeçalho fixo e global */}
-        <Header />
+      <body className="min-h-screen flex flex-col bg-white text-slate-800" suppressHydrationWarning>
+        {/* Link para pular direto ao conteúdo */}
+        <a
+          href="#conteudo-principal"
+          className="absolute left-0 top-0 m-2 p-2 bg-orange-500 text-white rounded focus:translate-y-0 -translate-y-20 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition"
+        >
+          Pular para o conteúdo principal
+        </a>
 
-        {/* Conteúdo das páginas (Home, Detalhe, etc.) */}
-        <main className="flex-grow max-w-5xl mx-auto p-4">
+        {/* Dados estruturados */}
+        <StructuredData />
+
+        {/* Cabeçalho principal */}
+        <Header categories={categories} tags={tags} />
+
+        {/* Conteúdo principal */}
+        <main id="conteudo-principal" role="main" className="flex-grow max-w-5xl mx-auto p-4">
           {children}
         </main>
 

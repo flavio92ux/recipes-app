@@ -1,6 +1,62 @@
 import type { Metadata } from 'next';
 import type { Recipe } from '@/types/recipe';
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+
+/**
+ * Gera metadata para a página inicial (layout.tsx).
+ * Usar em export const metadata no app/layout.tsx
+ */
+export const homeMetadata: Metadata = {
+  title: 'Delícias na Cozinha | Receitas Fáceis e Rápidas',
+  description:
+    'Descubra receitas deliciosas e práticas para o dia a dia. Encontre opções doces, salgadas, massas, pratos fit e muito mais para todas as ocasiões. Aprenda a cozinhar com receitas simples e saborosas.',
+  keywords: [
+    'receitas',
+    'cozinha',
+    'doces',
+    'salgados',
+    'fáceis',
+    'rápidas',
+    'culinária',
+    'práticas',
+    'gastronomia',
+  ],
+  authors: [{ name: 'Delícias na Cozinha' }],
+  openGraph: {
+    title: 'Delícias na Cozinha | Receitas Fáceis e Rápidas',
+    description:
+      'Descubra receitas deliciosas e práticas para o dia a dia. Encontre opções doces, salgadas, massas, pratos fit e muito mais para todas as ocasiões. Aprenda a cozinhar com receitas simples e saborosas.',
+    url: SITE_URL,
+    siteName: 'Delícias na Cozinha',
+    images: [
+      {
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Delícias na Cozinha - Receitas Fáceis e Rápidas',
+      },
+    ],
+    type: 'website',
+    locale: 'pt_BR',
+  },
+  icons: {
+    icon: '/favicon.ico',
+  },
+  alternates: {
+    canonical: `${SITE_URL}/`,
+  },
+  metadataBase: new URL(SITE_URL),
+  publisher: 'Delícias na Cozinha',
+  robots: {
+    index: true,
+    follow: true,
+    'max-video-preview': -1,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
+  },
+};
+
 /**
  * Gera metadata do Next (title, description, OG, twitter, canonical).
  * Usar em generateMetadata() dentro de app/receitas/[slug]/page.tsx
@@ -31,11 +87,146 @@ export function recipeMetadata(recipe: Recipe): Metadata {
 }
 
 /**
+ * Gera metadata para páginas de categorias.
+ * Usar em generateMetadata() dentro de app/[category]/page.tsx
+ */
+export function categoryMetadata(category: string): Metadata {
+  const title = `Receitas de ${category} | Delícias na Cozinha`;
+  const description = `Descubra as melhores receitas de ${category} no Delícias na Cozinha. Explore nossa coleção completa de receitas práticas e deliciosas para todas as ocasiões. Encontre inspiração culinária e aprenda novas técnicas de preparo.`;
+
+  return {
+    title,
+    description,
+    keywords: [
+      'receitas',
+      category,
+      'cozinha',
+      'culinária',
+      'doces',
+      'salgados',
+      'gastronomia',
+    ],
+    openGraph: {
+      title,
+      description,
+      url: `${SITE_URL}/${category}`,
+      siteName: 'Delícias na Cozinha',
+      images: [
+        {
+          url: `${SITE_URL}/images/${category}-og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: `Receitas de ${category} - Delícias na Cozinha`,
+        },
+      ],
+      type: 'website',
+      locale: 'pt_BR',
+    },
+    alternates: {
+      canonical: `${SITE_URL}/${category}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  };
+}
+
+/**
+ * Gera metadata para páginas de tags.
+ * Usar em generateMetadata() dentro de app/tag/[tag]/page.tsx
+ */
+export function tagMetadata(tag: string): Metadata {
+  const decodedTag = decodeURIComponent(tag);
+  const title = `Receitas com tag ${decodedTag} | Delícias na Cozinha`;
+  const description = `Explore nossa coleção de receitas com a tag ${decodedTag}. Descubra pratos deliciosos e práticos para todas as ocasiões. Encontre receitas selecionadas que combinam com seu estilo de vida e preferências culinárias.`;
+
+  return {
+    title,
+    description,
+    keywords: [
+      'receitas',
+      decodedTag,
+      'cozinha',
+      'culinária',
+      'gastronomia',
+    ],
+    openGraph: {
+      title,
+      description,
+      url: `${SITE_URL}/tag/${tag}`,
+      siteName: 'Delícias na Cozinha',
+      images: [
+        {
+          url: `${SITE_URL}/images/${tag}-og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: `Receitas com tag ${decodedTag} - Delícias na Cozinha`,
+        },
+      ],
+      type: 'website',
+      locale: 'pt_BR',
+    },
+    alternates: {
+      canonical: `${SITE_URL}/tag/${tag}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  };
+}
+
+/**
+ * Gera JSON-LD (schema.org) para a página inicial.
+ * Retorna string pronta para injetar em <script type="application/ld+json">.
+ */
+export function homeJsonLd(): string {
+  const ld = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    url: `${SITE_URL}/`,
+    name: 'Delícias na Cozinha',
+    description: 'Descubra receitas deliciosas e práticas para o dia a dia. Encontre opções doces, salgadas, massas, pratos fit e muito mais para todas as ocasiões.',
+  };
+
+  return JSON.stringify(ld);
+}
+
+interface RecipeJsonLd {
+  '@context': 'https://schema.org/' | string;
+  '@type': 'Recipe';
+  name: string;
+  author?: {
+    '@type': 'Person';
+    name: string;
+  };
+  datePublished?: string;
+  description?: string;
+  recipeCategory?: string;
+  recipeCuisine?: string;
+  prepTime?: string;
+  recipeYield?: string;
+  image?: string[];
+  recipeIngredient?: string[];
+  recipeInstructions?: Array<{
+    '@type': 'HowToStep';
+    text: string;
+  }>;
+}
+
+/**
  * Gera JSON-LD (schema.org) para receitas.
  * Retorna string pronta para injetar em <script type="application/ld+json">.
  */
 export function recipeJsonLd(recipe: Recipe): string {
-  const ld: any = {
+  const ld: RecipeJsonLd = {
     '@context': 'https://schema.org/',
     '@type': 'Recipe',
     name: recipe.title,
@@ -51,7 +242,6 @@ export function recipeJsonLd(recipe: Recipe): string {
     recipeInstructions: recipe.steps?.map((s) => ({ '@type': 'HowToStep', text: s })) ?? undefined,
   };
 
-  // Remover propriedades undefined antes de serializar
   const cleaned = Object.fromEntries(
     Object.entries(ld).filter(([, v]) => v !== undefined && v !== null)
   );

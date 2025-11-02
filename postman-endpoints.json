@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "756635a7-acf5-4320-8b1a-dc628bf0d125",
+		"name": "Next Recipes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24619426",
+		"_collection_link": "https://gold-firefly-886319.postman.co/workspace/New-Team-Workspace~c438f247-37d2-4297-8f56-cead24fd469f/collection/24619426-756635a7-acf5-4320-8b1a-dc628bf0d125?action=share&source=collection_link&creator=24619426"
+	},
+	"item": [
+		{
+			"name": "Revalidatetag /receitas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/revalidateTag?tag=home&secret=supersegredo123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"revalidateTag"
+					],
+					"query": [
+						{
+							"key": "tag",
+							"value": "home"
+						},
+						{
+							"key": "secret",
+							"value": "supersegredo123"
+						},
+						{
+							"key": "path",
+							"value": "/conforto",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/receitas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/receitas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"receitas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/categorias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/categorias",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"categorias"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/tags",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/tags",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"tags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/receita by category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/receitas?category=massa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"receitas"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "massa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "receitas by slug",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/receitas/xxx",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"receitas",
+						"xxx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all slugs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/receitas/xxx",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"receitas",
+						"xxx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n    \"id\": \"r-0031\",\n    \"slug\": \"Liso\",\n    \"title\": \"Liso\",\n    \"category\": \"café\",\n    \"description\": \"Tostadas com bacon crocante e ovos mexidos cremosos, finalizados com cebolinha.\",\n    \"prepTime\": 15,\n    \"servings\": 2,\n    \"image\": \"/images/tostada-bacon-ovos.jpg\",\n    \"author\": \"Casa da Manhã\",\n    \"ingredients\": [\n      \"4 fatias de bacon (tocino)\",\n      \"4 ovos\",\n      \"2 fatias de pão tostado\",\n      \"1 colher de sopa de manteiga\",\n      \"cebolinha a gosto\",\n      \"sal e pimenta\"\n    ],\n    \"steps\": [\n      \"Frite o bacon até ficar crocante e reserve.\",\n      \"Bata levemente os ovos com sal e pimenta; cozinhe em fogo baixo com manteiga até ficarem cremosos.\",\n      \"Monte sobre as tostadas, finalize com cebolinha e o bacon por cima.\"\n    ],\n    \"tags\": [\n      \"café-da-manhã\",\n      \"rápido\"\n    ],\n    \"seo\": {\n      \"title\": \"Tostada de Bacon e Ovos Cremosos\",\n      \"description\": \"Receita rápida de tostada com bacon crocante e ovos mexidos cremosos. Perfeita para brunch.\",\n      \"canonical\": \"/receitas/tocino-e-ovos-com-tatto\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/receitas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"receitas"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
