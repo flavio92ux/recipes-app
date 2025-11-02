@@ -1,6 +1,22 @@
 import type { Recipe, RecipeSummary } from '@/types/recipe';
 
-const API_BASE_URL = 'http://localhost:3001';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+
+interface FetchOptions extends RequestInit {
+  next?: {
+    revalidate?: number | false;
+    tags?: string[];
+  };
+}
+
+function getFetchOptions(revalidate: number, tags: string[]): FetchOptions {
+  return {
+    next: { revalidate, tags },
+    headers: {
+      'Cache-Control': `public, s-maxage=${revalidate}, stale-while-revalidate=${revalidate * 2}`,
+    },
+  };
+}
 
 /**
  * Retorna todas as receitas (resumo)
@@ -19,7 +35,7 @@ export async function getRecipes(
 
   const response = await fetch(
     `${API_BASE_URL}/api/receitas${params.toString() ? `?${params}` : ''}`,
-    { next: { revalidate: 60, tags } }
+    getFetchOptions(60, tags)
   );
 
   if (!response.ok) throw new Error(`Erro ao buscar receitas: ${response.statusText}`);
@@ -30,9 +46,10 @@ export async function getRecipes(
  * Retorna uma receita completa pelo slug
  */
 export async function getRecipeBySlug(slug: string): Promise<Recipe | null> {
-  const response = await fetch(`${API_BASE_URL}/api/receitas/${slug}`, {
-    next: { revalidate: 60, tags: [`recipe:${slug}`] },
-  });
+  const response = await fetch(
+    `${API_BASE_URL}/api/receitas/${slug}`,
+    getFetchOptions(60, [`recipe:${slug}`])
+  );
   if (!response.ok) return null;
   return response.json();
 }
@@ -41,22 +58,25 @@ export async function getRecipeBySlug(slug: string): Promise<Recipe | null> {
  * Categorias e tags
  */
 export async function getCategories() {
-  const response = await fetch(`${API_BASE_URL}/api/categorias`, {
-    next: { revalidate: 3600, tags: ['categories'] },
-  });
+  const response = await fetch(
+    `${API_BASE_URL}/api/categorias`,
+    getFetchOptions(3600, ['categories'])
+  );
   return response.json();
 }
 
 export async function getTags() {
-  const response = await fetch(`${API_BASE_URL}/api/tags`, {
-    next: { revalidate: 3600, tags: ['tags'] },
-  });
+  const response = await fetch(
+    `${API_BASE_URL}/api/tags`,
+    getFetchOptions(3600, ['tags'])
+  );
   return response.json();
 }
 
 export async function getSlugs() {
-  const response = await fetch(`${API_BASE_URL}/api/slugs`, {
-    next: { revalidate: 3600, tags: ['slugs'] },
-  });
+  const response = await fetch(
+    `${API_BASE_URL}/api/slugs`,
+    getFetchOptions(3600, ['slugs'])
+  );
   return response.json();
 }

@@ -8,29 +8,73 @@ export async function POST(req: NextRequest) {
     const tag = req.nextUrl.searchParams.get('tag');
     const path = req.nextUrl.searchParams.get('path');
 
-
-
-    // Verificação simples de segurança
     if (secret !== process.env.REVALIDATE_SECRET) {
-      return NextResponse.json({ message: 'Invalid secret' }, { status: 401 });
+      return NextResponse.json(
+        { message: 'Invalid secret' },
+        {
+          status: 401,
+          headers: {
+            'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0'
+          }
+        }
+      );
     }
 
     if (tag) {
-      // Invalida o cache associado à tag
       revalidateTag(tag, 'max');
 
-      return NextResponse.json({ revalidated: true, tag });
+      return NextResponse.json(
+        { revalidated: true, tag },
+        {
+          headers: {
+            'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0'
+          }
+        }
+      );
     }
 
     if (path) {
       revalidatePath(path);
-      return NextResponse.json({ revalidated: true, path });
+      return NextResponse.json(
+        { revalidated: true, path },
+        {
+          headers: {
+            'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0'
+          }
+        }
+      );
     }
 
-    return NextResponse.json({ message: 'Missing tag parameter' }, { status: 400 });
+    return NextResponse.json(
+      { message: 'Missing tag parameter' },
+      {
+        status: 400,
+        headers: {
+          'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0'
+        }
+      }
+    );
 
   } catch (err) {
     console.error(err);
-    return NextResponse.json({ message: 'Error revalidating' }, { status: 500 });
+    return NextResponse.json(
+      { message: 'Error revalidating' },
+      {
+        status: 500,
+        headers: {
+          'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0'
+        }
+      }
+    );
   }
 }
