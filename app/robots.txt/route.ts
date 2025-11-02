@@ -5,7 +5,7 @@ export async function GET() {
 User-agent: *
 Allow: /
 
-Sitemap: https://localhost:3000/sitemap.xml
+Sitemap: http://localhost:3000/sitemap.xml
   `.trim();
 
   return new NextResponse(content, {
