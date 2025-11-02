@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import type { Recipe } from '@/types/recipe';
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+
 /**
  * Gera metadata para a página inicial (layout.tsx).
  * Usar em export const metadata no app/layout.tsx
@@ -25,11 +27,11 @@ export const homeMetadata: Metadata = {
     title: 'Delícias na Cozinha | Receitas Fáceis e Rápidas',
     description:
       'Descubra receitas deliciosas e práticas para o dia a dia. Encontre opções doces, salgadas, massas, pratos fit e muito mais para todas as ocasiões. Aprenda a cozinhar com receitas simples e saborosas.',
-    url: 'http://localhost:3000',
+    url: SITE_URL,
     siteName: 'Delícias na Cozinha',
     images: [
       {
-        url: 'http://localhost:3000/og-image.png',
+        url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
         alt: 'Delícias na Cozinha - Receitas Fáceis e Rápidas',
@@ -42,9 +44,9 @@ export const homeMetadata: Metadata = {
     icon: '/favicon.ico',
   },
   alternates: {
-    canonical: 'http://localhost:3000/',
+    canonical: `${SITE_URL}/`,
   },
-  metadataBase: new URL('http://localhost:3000'),
+  metadataBase: new URL(SITE_URL),
   publisher: 'Delícias na Cozinha',
   robots: {
     index: true,
@@ -107,11 +109,11 @@ export function categoryMetadata(category: string): Metadata {
     openGraph: {
       title,
       description,
-      url: `http://localhost:3000/${category}`,
+      url: `${SITE_URL}/${category}`,
       siteName: 'Delícias na Cozinha',
       images: [
         {
-          url: `http://localhost:3000/images/${category}-og-image.jpg`,
+          url: `${SITE_URL}/images/${category}-og-image.jpg`,
           width: 1200,
           height: 630,
           alt: `Receitas de ${category} - Delícias na Cozinha`,
@@ -121,7 +123,7 @@ export function categoryMetadata(category: string): Metadata {
       locale: 'pt_BR',
     },
     alternates: {
-      canonical: `http://localhost:3000/${category}`,
+      canonical: `${SITE_URL}/${category}`,
     },
     robots: {
       index: true,
@@ -155,11 +157,11 @@ export function tagMetadata(tag: string): Metadata {
     openGraph: {
       title,
       description,
-      url: `http://localhost:3000/tag/${tag}`,
+      url: `${SITE_URL}/tag/${tag}`,
       siteName: 'Delícias na Cozinha',
       images: [
         {
-          url: `http://localhost:3000/images/${tag}-og-image.jpg`,
+          url: `${SITE_URL}/images/${tag}-og-image.jpg`,
           width: 1200,
           height: 630,
           alt: `Receitas com tag ${decodedTag} - Delícias na Cozinha`,
@@ -169,7 +171,7 @@ export function tagMetadata(tag: string): Metadata {
       locale: 'pt_BR',
     },
     alternates: {
-      canonical: `http://localhost:3000/tag/${tag}`,
+      canonical: `${SITE_URL}/tag/${tag}`,
     },
     robots: {
       index: true,
@@ -189,7 +191,7 @@ export function homeJsonLd(): string {
   const ld = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    url: 'http://localhost:3000/',
+    url: `${SITE_URL}/`,
     name: 'Delícias na Cozinha',
     description: 'Descubra receitas deliciosas e práticas para o dia a dia. Encontre opções doces, salgadas, massas, pratos fit e muito mais para todas as ocasiões.',
   };
