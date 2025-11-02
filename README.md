@@ -33,6 +33,8 @@ npm run dev
 # O site estará disponível em:
 # - Frontend: http://localhost:3000
 # - API Mock: http://localhost:3001
+
+ROTAS POSTMAN DA API DISPONÍVEIS PARA IMPORTAÇÃO EM /postman-endpoints.json
 ```
 
 ### Estrutura de URLs disponíveis:
