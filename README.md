@@ -2,7 +2,7 @@
 
 ## 👤 Autor
 **Nome:** Flavio Franco  
-**Data de entrega:** 3/nov
+**Data de entrega:** 2/nov
 
 ---
 
@@ -11,6 +11,8 @@ O objetivo foi construir um **micro-portal de receitas** inspirado em um CMS hea
 
 A aplicação foi desenvolvida em **Next.js (App Router)**, consumindo dados a partir de **JSONs locais**.  
 As decisões priorizaram **renderização híbrida (SSG/ISR)**, **cache com revalidação** e **boas práticas de SEO**.
+
+Acesse o vídeo onde mostro uma visão geral do projeto: 
 
 ---
 
@@ -135,8 +137,8 @@ types/
 ## 4. Estratégia de cache e headers
 
 - Cada `fetch` usa cache e revalidação otimizados para o tipo de conteúdo:
-  - Receitas: 24 horas de cache (`revalidate: 86400`)
-  - Listagens (categorias/tags): 12 horas (`revalidate: 43200`)
+  - Receitas: 1 hora de cache (`revalidate: 3600`)
+  - Listagens (categorias/tags): 1 hora (`revalidate: 3600`)
   - Páginas estáticas: 7 dias (`revalidate: 604800`)
 - Endpoint `/api/revalidate` permite invalidação sob demanda:
   - `POST /api/revalidate?tag=recipe:bolo-de-cenoura&secret=...`
