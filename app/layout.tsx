@@ -14,14 +14,22 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="pt-BR">
       <body className="min-h-screen flex flex-col bg-white text-slate-800">
+        {/* Link para pular direto ao conteúdo */}
+        <a
+          href="#conteudo-principal"
+          className="absolute left-0 top-0 m-2 p-2 bg-orange-500 text-white rounded focus:translate-y-0 -translate-y-20 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition"
+        >
+          Pular para o conteúdo principal
+        </a>
+
         {/* Dados estruturados */}
         <StructuredData />
 
-        {/* Cabeçalho fixo e global com categorias */}
+        {/* Cabeçalho principal */}
         <Header categories={categories} />
 
-        {/* Conteúdo das páginas (Home, Detalhe, etc.) */}
-        <main className="flex-grow max-w-5xl mx-auto p-4">
+        {/* Conteúdo principal */}
+        <main id="conteudo-principal" role="main" className="flex-grow max-w-5xl mx-auto p-4">
           {children}
         </main>
 

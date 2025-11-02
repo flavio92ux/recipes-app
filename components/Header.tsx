@@ -17,16 +17,8 @@ export default function Header({ categories }: { categories: { total: number; it
   const searchRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  const tags = [
-    'rápido',
-    'festa',
-    'saudável',
-    'conforto',
-    'verão',
-    'sobremesa',
-  ];
+  const tags = ['rápido', 'festa', 'saudável', 'conforto', 'verão', 'sobremesa'];
 
-  // Busca receitas quando o usuário digita 3+ letras
   useEffect(() => {
     const timer = setTimeout(async () => {
       if (searchQuery.length >= 3) {
@@ -48,19 +40,16 @@ export default function Header({ categories }: { categories: { total: number; it
         setSuggestions([]);
         setShowSuggestions(false);
       }
-    }, 300); // Debounce de 300ms
-
+    }, 300);
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
-  // Fecha sugestões ao clicar fora
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
         setShowSuggestions(false);
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
@@ -80,15 +69,16 @@ export default function Header({ categories }: { categories: { total: number; it
   };
 
   return (
-    <header className="border-b bg-white sticky top-0 z-50">
+    <header role="banner" className="border-b bg-white sticky top-0 z-50">
       <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold text-orange-600" title="Ir para página inicial">
-          🍳 Receitas
+          🍳 <span className="sr-only">Página inicial - Delícias na Cozinha</span>
+          <span aria-hidden="true">Receitas</span>
         </Link>
 
-        {/* Navegação */}
-        <nav className="flex gap-4 text-sm font-medium text-gray-700">
+        {/* Navegação principal */}
+        <nav aria-label="Categorias" className="flex gap-4 text-sm font-medium text-gray-700">
           {categories.items.map((category) => (
             <Link
               key={category}
@@ -101,38 +91,45 @@ export default function Header({ categories }: { categories: { total: number; it
           ))}
         </nav>
 
-        {/* Busca com Autocomplete */}
-        <div ref={searchRef} className="relative w-full sm:w-auto">
-          <form
-            onSubmit={handleSubmit}
-            className="flex items-center border rounded overflow-hidden"
-          >
+        {/* Busca com acessibilidade */}
+        <div ref={searchRef} className="relative w-full sm:w-auto" aria-label="Busca de receitas">
+          <form onSubmit={handleSubmit} className="flex items-center border rounded overflow-hidden" role="search">
+            <label htmlFor="campo-busca" className="sr-only">Buscar receitas</label>
             <input
+              id="campo-busca"
               type="text"
               placeholder="Buscar receitas..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onFocus={() => searchQuery.length >= 3 && setShowSuggestions(true)}
               className="px-2 py-1 text-sm w-full focus:outline-none"
+              aria-describedby="descricao-busca"
             />
             <button
               type="submit"
               className="bg-orange-500 text-white px-3 py-1 hover:bg-orange-600 transition"
               title="Buscar receitas"
+              aria-label="Executar busca"
             >
               🔍
             </button>
           </form>
+          <p id="descricao-busca" className="sr-only">
+            Digite o nome de uma receita e pressione Enter para buscar.
+          </p>
 
           {/* Dropdown de Sugestões */}
           {showSuggestions && (
-            <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded shadow-lg z-10">
+            <div
+              role="listbox"
+              className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded shadow-lg z-10"
+            >
               {isLoading ? (
                 <div className="px-3 py-2 text-sm text-gray-500">Carregando...</div>
               ) : suggestions.length > 0 ? (
                 <ul className="max-h-64 overflow-y-auto">
                   {suggestions.map((suggestion, index) => (
-                    <li key={index}>
+                    <li key={index} role="option">
                       <button
                         type="button"
                         onClick={() => handleSuggestionClick(suggestion.path)}
@@ -154,7 +151,8 @@ export default function Header({ categories }: { categories: { total: number; it
         </div>
       </div>
 
-      <aside className="hidden sm:block border-t bg-gray-50">
+      {/* Menu secundário de tags */}
+      <aside className="hidden sm:block border-t bg-gray-50" aria-label="Temas de receitas">
         <div className="max-w-5xl mx-auto px-4 py-2">
           <p className="text-sm font-semibold text-gray-600 mb-1">Temas</p>
           <ul className="flex flex-wrap gap-3 text-sm">
