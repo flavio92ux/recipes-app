@@ -12,7 +12,8 @@ O objetivo foi construir um **micro-portal de receitas** inspirado em um CMS hea
 A aplicação foi desenvolvida em **Next.js (App Router)**, consumindo dados a partir de **JSONs locais**.  
 As decisões priorizaram **renderização híbrida (SSG/ISR)**, **cache com revalidação** e **boas práticas de SEO**.
 
-Acesse o vídeo onde mostro uma visão geral do projeto: 
+Acesse o vídeo onde mostro uma visão geral do projeto: https://www.youtube.com/watch?v=tOqtfeKdMs8
+ROTAS POSTMAN DA API DISPONÍVEIS PARA IMPORTAÇÃO EM /postman-endpoints.json
 
 ---
 
@@ -39,7 +40,6 @@ npm start
 # - Frontend: http://localhost:3000
 # - API Mock: http://localhost:3001
 
-ROTAS POSTMAN DA API DISPONÍVEIS PARA IMPORTAÇÃO EM /postman-endpoints.json
 ```
 
 ### Estrutura de URLs disponíveis:
