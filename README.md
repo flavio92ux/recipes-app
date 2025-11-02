@@ -34,6 +34,8 @@ npm run build
 # Execução do build estático
 npm start
 
+** Foi utilizado node 22 no projeto **
+
 # O site estará disponível em:
 # - Frontend: http://localhost:3000
 # - API Mock: http://localhost:3001
