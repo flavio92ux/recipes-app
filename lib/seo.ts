@@ -199,12 +199,34 @@ export function homeJsonLd(): string {
   return JSON.stringify(ld);
 }
 
+interface RecipeJsonLd {
+  '@context': 'https://schema.org/' | string;
+  '@type': 'Recipe';
+  name: string;
+  author?: {
+    '@type': 'Person';
+    name: string;
+  };
+  datePublished?: string;
+  description?: string;
+  recipeCategory?: string;
+  recipeCuisine?: string;
+  prepTime?: string;
+  recipeYield?: string;
+  image?: string[];
+  recipeIngredient?: string[];
+  recipeInstructions?: Array<{
+    '@type': 'HowToStep';
+    text: string;
+  }>;
+}
+
 /**
  * Gera JSON-LD (schema.org) para receitas.
  * Retorna string pronta para injetar em <script type="application/ld+json">.
  */
 export function recipeJsonLd(recipe: Recipe): string {
-  const ld: any = {
+  const ld: RecipeJsonLd = {
     '@context': 'https://schema.org/',
     '@type': 'Recipe',
     name: recipe.title,
