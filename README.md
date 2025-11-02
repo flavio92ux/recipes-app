@@ -1,9 +1,7 @@
-# **Mini-Portal de Receitas — Desafio Técnico (Front-end / Next.js)**
+# **Mini-Portal de Receitas (Front-end / Next.js)**
 
 ## 👤 Autor
-**Nome:** Flavio Franco  
-**Data de entrega:** 2/nov
-
+**Nome:** Flavio Franco
 ---
 
 ## 1. Visão geral do projeto
