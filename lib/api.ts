@@ -2,6 +2,13 @@ import type { Recipe, RecipeSummary } from '@/types/recipe';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
+// Tempos de revalidação em segundos
+const REVALIDATE_TIMES = {
+  RECIPE: 24 * 60 * 60,      // 24 horas
+  LISTING: 12 * 60 * 60,     // 12 horas
+  STATIC: 7 * 24 * 60 * 60,  // 7 dias
+} as const;
+
 interface FetchOptions extends RequestInit {
   next?: {
     revalidate?: number | false;
@@ -35,7 +42,7 @@ export async function getRecipes(
 
   const response = await fetch(
     `${API_BASE_URL}/api/receitas${params.toString() ? `?${params}` : ''}`,
-    getFetchOptions(60, tags)
+    getFetchOptions(REVALIDATE_TIMES.LISTING, tags)
   );
 
   if (!response.ok) throw new Error(`Erro ao buscar receitas: ${response.statusText}`);
@@ -48,7 +55,7 @@ export async function getRecipes(
 export async function getRecipeBySlug(slug: string): Promise<Recipe | null> {
   const response = await fetch(
     `${API_BASE_URL}/api/receitas/${slug}`,
-    getFetchOptions(60, [`recipe:${slug}`])
+    getFetchOptions(REVALIDATE_TIMES.RECIPE, [`recipe:${slug}`])
   );
   if (!response.ok) return null;
   return response.json();
@@ -60,7 +67,7 @@ export async function getRecipeBySlug(slug: string): Promise<Recipe | null> {
 export async function getCategories() {
   const response = await fetch(
     `${API_BASE_URL}/api/categorias`,
-    getFetchOptions(3600, ['categories'])
+    getFetchOptions(REVALIDATE_TIMES.LISTING, ['categories'])
   );
   return response.json();
 }
@@ -68,7 +75,7 @@ export async function getCategories() {
 export async function getTags() {
   const response = await fetch(
     `${API_BASE_URL}/api/tags`,
-    getFetchOptions(3600, ['tags'])
+    getFetchOptions(REVALIDATE_TIMES.LISTING, ['tags'])
   );
   return response.json();
 }

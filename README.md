@@ -31,23 +31,30 @@ types/ → Tipagens (Recipe, RecipeSummary)
 
 | Página | Estratégia | Motivo |
 |--------|-------------|--------|
-| `/` (home) | **SSG (static)** | Performance e escalabilidade — TTFB mínimo |
-| `/[category]` | **SSR / on-demand static** | Número alto de categorias, renderização sob demanda |
-| `/receitas/[slug]` | **ISR (revalidate=60)** | Balanceia atualização e baixo impacto de recompilação |
-| `/tag/[tag]` | **SSG + dynamicParams** | Baixo custo, cacheável |
+| `/` (home) | **SSG + ISR (24h)** | Conteúdo estável, atualização diária é suficiente |
+| `/[category]` | **SSG + ISR (12h)** | Categorias mudam pouco, duas atualizações por dia são adequadas |
+| `/receitas/[slug]` | **SSG + ISR (24h)** | Receitas raramente são editadas após publicação |
+| `/tag/[tag]` | **SSG + ISR (12h)** | Tags mudam pouco, duas atualizações por dia são adequadas |
+| Páginas estáticas | **SSG (7d)** | Conteúdo institucional, raramente alterado |
 
-> Trade-off: usar ISR evita rebuilds totais e mantém conteúdo atualizado via revalidação seletiva.
+> Trade-off: Priorizando performance e economia de recursos, já que o conteúdo é naturalmente estável.
 
 ---
 
 ## ⚡️ 4. Estratégia de cache e headers
 
-- Cada `fetch` usa `next: { revalidate: 60, tags: ['recipes', 'category'] }`.
-- Endpoint `/api/revalidate` permite invalidação seletiva:
-  - `POST /api/revalidate?tag=recipes&secret=...`
-  - `POST /api/revalidate?path=/receitas/bolo-de-cenoura`
-- HTML gerado via SSG/ISR é servido com cache controlado pelo Next e CDN.
-- Estratégia simulada, mas equivalente à produção com Redis/edge cache.
+- Cada `fetch` usa cache e revalidação otimizados para o tipo de conteúdo:
+  - Receitas: 24 horas de cache (`revalidate: 86400`)
+  - Listagens (categorias/tags): 12 horas (`revalidate: 43200`)
+  - Páginas estáticas: 7 dias (`revalidate: 604800`)
+- Endpoint `/api/revalidate` permite invalidação sob demanda:
+  - `POST /api/revalidate?tag=recipe:bolo-de-cenoura&secret=...`
+  - `POST /api/revalidate?tag=category:doces&secret=...`
+- Headers de cache configurados via `Cache-Control`:
+  - `public` - permitindo cache em CDNs
+  - `s-maxage` - controle de cache no servidor
+  - `stale-while-revalidate` - servindo cache enquanto atualiza
+- Estratégia adaptada para o fluxo editorial de receitas
 
 ---
 
