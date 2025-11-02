@@ -33,10 +33,10 @@ types/ → Tipagens (Recipe, RecipeSummary)
 |--------|-------------|--------|
 | `/` (home) | **SSG (static)** | Performance e escalabilidade — TTFB mínimo |
 | `/[category]` | **SSR / on-demand static** | Número alto de categorias, renderização sob demanda |
-| `/receitas/[slug]` | **ISR (revalidate=60)** | Balanceia frescor e custo de rebuild |
+| `/receitas/[slug]` | **ISR (revalidate=60)** | Balanceia atualização e baixo impacto de recompilação |
 | `/tag/[tag]` | **SSG + dynamicParams** | Baixo custo, cacheável |
 
-> Trade-off: usar ISR evita rebuilds totais e mantém conteúdo fresco via revalidação seletiva.
+> Trade-off: usar ISR evita rebuilds totais e mantém conteúdo atualizado via revalidação seletiva.
 
 ---
 

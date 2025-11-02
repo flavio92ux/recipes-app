@@ -2,9 +2,6 @@ import React from 'react';
 import type { Recipe } from '@/types/recipe';
 import Image from 'next/image';
 
-/**
- * Componente que exibe uma receita completa, com acessibilidade aprimorada.
- */
 export default function RecipeDetail({ r }: { r: Recipe }) {
   const titleId = `titulo-receita-${r.slug ?? r.id}`;
 

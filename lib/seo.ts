@@ -242,7 +242,6 @@ export function recipeJsonLd(recipe: Recipe): string {
     recipeInstructions: recipe.steps?.map((s) => ({ '@type': 'HowToStep', text: s })) ?? undefined,
   };
 
-  // Remover propriedades undefined antes de serializar
   const cleaned = Object.fromEntries(
     Object.entries(ld).filter(([, v]) => v !== undefined && v !== null)
   );
