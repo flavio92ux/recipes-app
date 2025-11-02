@@ -14,6 +14,43 @@ As decisões priorizaram **renderização híbrida (SSG/ISR)**, **cache com reva
 
 ---
 
+## 🚀 Como Executar
+
+```bash
+# Clone o repositório
+git clone https://github.com/flavio92ux/recipes-app.git
+cd recipes-app
+
+# Instale as dependências
+npm install
+
+# Em um terminal, inicie a API Mock (necessário para os dados)
+npm run api
+
+# Em outro terminal, inicie o servidor de desenvolvimento
+npm run dev
+
+# O site estará disponível em:
+# - Frontend: http://localhost:3000
+# - API Mock: http://localhost:3001
+```
+
+### Estrutura de URLs disponíveis:
+- `/` → Página inicial com lista de receitas
+- `/[categoria]` → ex: `/doces`, `/salgados`
+- `/receitas/[slug]` → ex: `/receitas/bolo-de-cenoura`
+- `/tag/[tag]` → ex: `/tag/facil`, `/tag/rapido`
+- `/sobre`, `/contato` → Páginas estáticas
+
+### Variáveis de Ambiente:
+```bash
+# Crie um arquivo .env.local com:
+NEXT_PUBLIC_API_URL=http://localhost:3001
+REVALIDATE_SECRET=seu-segredo-aqui  # para usar o endpoint de revalidação
+```
+
+---
+
 ## ⚙️ 2. Estrutura do projeto
 
 ```

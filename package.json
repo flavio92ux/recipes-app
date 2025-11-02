@@ -9,8 +9,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint",
-    "api": "node server/index.js",
-    "dev:all": "concurrently \"npm run dev\" \"npm run api\""
+    "api": "node server/index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
