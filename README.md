@@ -27,8 +27,11 @@ npm install
 # Em um terminal, inicie a API Mock (necessário para os dados)
 npm run api
 
-# Em outro terminal, inicie o servidor de desenvolvimento
-npm run dev
+# Build do projeto
+npm run build
+
+# Execução do build estático
+npm start
 
 # O site estará disponível em:
 # - Frontend: http://localhost:3000
