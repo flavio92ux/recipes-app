@@ -66,8 +66,6 @@ export async function getCategories() {
 }
 
 export async function getTags() {
-  console.log('xxxx')
-
   const response = await fetch(
     `${API_BASE_URL}/api/tags`,
     getFetchOptions(3600, ['tags'])
