@@ -13,7 +13,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="pt-BR">
-      <body className="min-h-screen flex flex-col bg-white text-slate-800">
+      <body className="min-h-screen flex flex-col bg-white text-slate-800" suppressHydrationWarning>
         {/* Link para pular direto ao conteúdo */}
         <a
           href="#conteudo-principal"
